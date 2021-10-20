@@ -1,0 +1,88 @@
+﻿const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const ejs = require('ejs');
+const mime = require('mime');
+const getJsonBody = require('body/json');
+const Url = require('url-parse');
+
+const apiRoutes = require('./routes/apiRoutes');
+const pageRoutes = require('./routes/pageRoutes');
+const { getMatchingRoute } = require('./routes/routeHelper');
+
+const server = http.createServer((request, response) => {
+	console.log(request.url);
+	const url = new Url(request.url);
+
+	const apiRoute = getMatchingRoute(url.pathname, request.method, apiRoutes);
+
+	if (apiRoute) {
+		getJsonBody(request, (_, body) => {
+			apiRoute.route.action(apiRoute.params, null, body);
+			response.setHeader('Content-Type', 'application/json');
+			response.statusCode = 200;
+			response.end();
+		});
+
+		return;
+	}
+
+	// if it's not a static file request and url matches
+	const pageRoute = !url.pathname.includes('.') && getMatchingRoute(url.pathname, request.method, pageRoutes);
+
+	if (pageRoute) {
+		const filePath = path.join(__dirname, 'views', pageRoute.route.page);
+
+		fs.readFile(filePath, {encoding: 'utf8'}, (err, template) => {
+			if (err) {
+				sendError(response, 404);
+				return;
+			}
+
+			const data = pageRoute.route.getData && pageRoute.route.getData(pageRoute.params);
+			const html = ejs.render(template, data);
+
+			response.statusCode = 200;
+			response.setHeader('Content-Type', 'text/html; charset=utf-8');
+			response.end(html);
+		});
+
+		return;
+	}
+
+	if (url.pathname.includes('..')) {
+		sendError(response, 400);
+		return;
+	}
+
+	const filePath = path.join(__dirname, 'public', url.pathname);
+
+	fs.readFile(filePath, (error, file) => {
+		if (error) {
+			sendError(response, 404);
+			return;
+		}
+
+		response.statusCode = 200;
+
+		const mimeType = mime.getType(path.extname(filePath));
+		response.setHeader('Content-Type', mimeType);
+
+		response.end(file);
+	});
+});
+
+server.listen(3000, error => {
+	if (error) {
+		console.error('Could not start server');
+		return;
+	}
+
+	console.log('Server is running');
+});
+
+function sendError(response, code, url) {
+	console.log(`Error ${code}, url: ${url}`);
+	response.statusCode = code;
+	response.end(code + '');
+}
