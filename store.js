@@ -1,9 +1,27 @@
 ﻿const todos = [{
 	id: 1,
-	title: 'Test',
+	title: 'Shop',
+	isDone: false,
 	category: 'private',
 	isUrgent: false,
-	description: 'This is a test todo'
-}];
+	description: 'To buy eggs'
+},
+{
+	id: 1,
+	title: 'Wash clothes',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
+{
+	id: 1,
+	title: 'Wash the dishes',
+	isDone: true,
+	category: 'private',
+	isUrgent: true,
+	description: 'With soap'
+},
+];
 
 module.exports = { todos };

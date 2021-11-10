@@ -1,11 +1,22 @@
-﻿<h1>Hello world!</h1>
+﻿<!DOCTYPE html>
 
-<% for (const todo of todos) { %>
-    <p><%= todo.title %></p>
-<% } %>
+<html>
+    <head>
+        <link rel="stylesheet" href="/styles/style.css">
+    </head>
 
-<form method="post" action="/api/">
-    <input name="test1" />
-    <input name="test2" />
-    <input type="submit"/>
-</form>
+    <body>
+        <h1>My TODO list</h1>
+
+    <% for (const todo of todos) { %>
+        <div class="todo <%= todo.isDone ? "done" : ""%>">
+
+            <input type="checkbox" class="todo-is-done" <%= todo.isDone ? "checked" : ""%>>
+
+            <p class="todo-title"><%= todo.title %></p>
+
+            <p class="todo-description"><%= todo.description %></p>
+        </div>
+    <% } %>
+    </body>
+</html>

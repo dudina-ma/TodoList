@@ -1,0 +1,40 @@
+body, p{
+    margin: 0;
+}
+
+h1 {
+    margin: 10px;
+}
+
+.todo {
+    width: 400px;
+    height: 80px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+.todo-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.todo-is-done {
+    margin: 10px;
+}
+
+.todo-is-done, .todo-title {
+    display: inline-block;
+}
+
+.todo-description {
+    margin: 10px;
+}
+
+.done {
+    background-color: #e8fcd7;
+}
+
+.done .todo-title {
+    text-decoration: line-through;
+}

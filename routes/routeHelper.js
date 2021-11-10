@@ -18,6 +18,8 @@
 			continue;
 		}
 
+		let match = true;
+
 		for (let i = 0; i < patternParts.length; i++) {
 			if (patternParts[i].startsWith(':')) {
 				const paramName = patternParts[i].substring(1);
@@ -27,12 +29,17 @@
 			}
 
 			if (urlParts[i] !== patternParts[i]) {
+				match = false;
 				break;
 			}
 		}
 
-		return { route, params };
+		if (match) {
+			return { route, params };
+		}
 	}
+
+	return null;
 }
 
 module.exports = {
