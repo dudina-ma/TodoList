@@ -13,7 +13,11 @@
 
             <input type="checkbox" class="todo-is-done" <%= todo.isDone ? "checked" : ""%>>
 
-            <p class="todo-title"><%= todo.title %></p>
+            <h2 class="todo-title"><%= todo.title %></h2>
+
+            <% if(todo.isUrgent) { %>
+                <img class ="urgent" src="/images/flames.png">
+            <% } %>
 
             <p class="todo-description"><%= todo.description %></p>
         </div>

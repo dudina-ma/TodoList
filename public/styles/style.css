@@ -1,4 +1,4 @@
-body, p{
+body, p, h2 {
     margin: 0;
 }
 
@@ -33,8 +33,14 @@ h1 {
 
 .done {
     background-color: #e8fcd7;
+    color: dimgray;
 }
 
 .done .todo-title {
     text-decoration: line-through;
+}
+
+.urgent {
+    margin: 5px;
+    vertical-align: bottom;
 }
