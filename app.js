@@ -1,7 +1,7 @@
 ﻿const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const ejs = require('ejs');
+const eta = require('eta');
 const mime = require('mime');
 const getJsonBody = require('body/json');
 const Url = require('url-parse');
@@ -40,7 +40,7 @@ const server = http.createServer((request, response) => {
 			}
 
 			const data = pageRoute.route.getData && pageRoute.route.getData(pageRoute.params);
-			const html = ejs.render(template, data);
+			const html = eta.render(template, data);
 
 			response.statusCode = 200;
 			response.setHeader('Content-Type', 'text/html; charset=utf-8');

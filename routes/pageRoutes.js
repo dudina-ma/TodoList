@@ -3,7 +3,7 @@
 const pageRoutes = [
 	{
 		url: '/',
-		page: 'index.ejs',
+		page: 'index.eta',
 		getData() {
 			return {
 				todos: [...todos]
@@ -12,7 +12,7 @@ const pageRoutes = [
 	},
 	{
 		url: '/:id/',
-		page: 'todo.ejs',
+		page: 'todo.eta',
 		getData(params) {
 			return todos.find(t => t.id === Number(params.id));
 		}

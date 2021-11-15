@@ -8,7 +8,7 @@
     <body>
         <h1>My TODO list</h1>
 
-    <% for (const todo of todos) { %>
+    <% for (const todo of it.todos) { %>
         <div class="todo <%= todo.isDone ? "done" : ""%>">
 
             <input type="checkbox" class="todo-is-done" <%= todo.isDone ? "checked" : ""%>>
