@@ -1,0 +1,14 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<link rel="stylesheet" href="/styles/style.css">
+	</head>
+	<body>
+		<header>Welcome to my todo list!</header>
+
+		<%~ it.body %>
+
+		<footer><a href="https://github.com/dudina-ma">https://github.com/dudina-ma</a></footer>
+	</body>
+</html>

@@ -33,14 +33,12 @@ const server = http.createServer((request, response) => {
 	if (pageRoute) {
 		const filePath = path.join(__dirname, 'views', pageRoute.route.page);
 
-		fs.readFile(filePath, {encoding: 'utf8'}, (err, template) => {
-			if (err) {
+		const data = pageRoute.route.getData && pageRoute.route.getData(pageRoute.params);
+		eta.renderFile(filePath, data, (error, html) => {
+			if (error) {
 				sendError(response, 404);
 				return;
 			}
-
-			const data = pageRoute.route.getData && pageRoute.route.getData(pageRoute.params);
-			const html = eta.render(template, data);
 
 			response.statusCode = 200;
 			response.setHeader('Content-Type', 'text/html; charset=utf-8');

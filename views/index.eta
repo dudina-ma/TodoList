@@ -1,26 +1,18 @@
-﻿<!DOCTYPE html>
+﻿<% layout('./layout') %>
 
-<html>
-    <head>
-        <link rel="stylesheet" href="/styles/style.css">
-    </head>
+<h1>My TODO list</h1>
 
-    <body>
-        <h1>My TODO list</h1>
+<% for (const todo of it.todos) { %>
+    <div class="todo <%= todo.isDone ? "done" : ""%>">
 
-    <% for (const todo of it.todos) { %>
-        <div class="todo <%= todo.isDone ? "done" : ""%>">
+        <input type="checkbox" class="todo-is-done" <%= todo.isDone ? "checked" : ""%>>
 
-            <input type="checkbox" class="todo-is-done" <%= todo.isDone ? "checked" : ""%>>
+        <h2 class="todo-title"><%= todo.title %></h2>
 
-            <h2 class="todo-title"><%= todo.title %></h2>
+        <% if(todo.isUrgent) { %>
+            <img class ="urgent" src="/images/flames.png">
+        <% } %>
 
-            <% if(todo.isUrgent) { %>
-                <img class ="urgent" src="/images/flames.png">
-            <% } %>
-
-            <p class="todo-description"><%= todo.description %></p>
-        </div>
-    <% } %>
-    </body>
-</html>
+        <p class="todo-description"><%= todo.description %></p>
+    </div>
+<% } %>
