@@ -18,7 +18,8 @@ const server = http.createServer((request, response) => {
 	const apiRoute = getMatchingRoute(url.pathname, request.method, apiRoutes);
 
 	if (apiRoute) {
-		const contentType = (request.headers['Content-Type'] || '').toLowerCase();
+		const contentType = (request.headers['content-type'] || '').toLowerCase();
+
 		if (contentType === 'application/x-www-form-urlencoded') {
 			getFormBody(request, (error, body) => {
 				apiRoute.route.action(apiRoute.params, null, body);

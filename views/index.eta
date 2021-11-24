@@ -9,13 +9,21 @@
 <% for (const todo of it.todos) { %>
     <div class="todo <%= todo.isDone ? "done" : ""%>">
 
-        <input type="checkbox" class="todo-is-done" <%= todo.isDone ? "checked" : ""%>>
+        <div class="todo-header">
+            <div>
+                <input type="checkbox" class="todo-is-done" <%= todo.isDone ? "checked" : ""%>>
 
-        <h2 class="todo-title"><%= todo.title %></h2>
+                <h2 class="todo-title"><%= todo.title %></h2>
 
-        <% if(todo.isUrgent) { %>
-            <img class ="urgent" src="/images/flames.png">
-        <% } %>
+                <% if(todo.isUrgent) { %>
+                    <img class ="urgent" src="/images/flames.png">
+                <% } %>
+            </div>
+
+            <div>
+                <button type='button' class='delete-btn'>╳</button>
+            </div>
+        </div>
 
         <p class="todo-description"><%= todo.description %></p>
     </div>

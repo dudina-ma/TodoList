@@ -2,10 +2,10 @@
 
 <h2 class="todo-create-title">Create new TODO</h2>
 
-<form action="" method="post">
+<form action="/api/todo/create/" method="post">
     <div class="create-form-field">
         <label>
-            Name <input type="text" name="name" size="30" maxlength="25">
+            Name <input type="text" name="title" size="30" maxlength="25">
         </label>
     </div>
 

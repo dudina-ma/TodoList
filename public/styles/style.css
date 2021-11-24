@@ -114,10 +114,46 @@ h1 {
     font-size: 16px;
 }
 
+.create-btn:hover {
+    font-size: 17px;
+}
+
+.create-btn:active {
+    background-color: white;
+    color: #093001;
+
+}
+
 .todo-create-title {
     margin: 15px;
 }
 
 .create-form-field {
     margin-bottom: 10px;
+}
+
+.delete-btn {
+    line-height: 100%;
+    padding: 0;
+    border: none;
+    background-color: #093001;
+    color: white;
+    margin-bottom: auto;
+    margin-top: auto;
+    font-size: 15px;
+    margin: 5px;
+}
+
+.delete-btn:hover {
+    transform: scale(1.1);
+}
+
+.delete-btn:active {
+    background-color: white;
+    color: #093001;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
 }

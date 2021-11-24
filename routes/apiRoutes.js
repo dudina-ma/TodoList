@@ -9,7 +9,7 @@ const apiRoutes = [
 		}
 	},
 	{
-		url: '/api/',
+		url: '/api/todo/create/',
 		method: 'POST',
 		action(_, __, body) {
 			const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
