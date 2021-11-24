@@ -35,8 +35,9 @@ const server = http.createServer((request, response) => {
 
 		const data = pageRoute.route.getData && pageRoute.route.getData(pageRoute.params);
 		eta.renderFile(filePath, data, (error, html) => {
+			// TODO: решать, какой надо код ошибки по error
 			if (error) {
-				sendError(response, 404);
+				sendError(response, 500);
 				return;
 			}
 

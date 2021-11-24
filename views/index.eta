@@ -1,6 +1,10 @@
 ﻿<% layout('./layout') %>
 
-<h1>My TODO list</h1>
+<div class="title-create-flexbox">
+    <h1>My TODO list</h1>
+    <a href="/create/" class="create-btn">Create TODO</a>
+</div>
+
 
 <% for (const todo of it.todos) { %>
     <div class="todo <%= todo.isDone ? "done" : ""%>">
@@ -16,3 +20,4 @@
         <p class="todo-description"><%= todo.description %></p>
     </div>
 <% } %>
+

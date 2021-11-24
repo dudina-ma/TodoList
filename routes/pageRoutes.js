@@ -11,11 +11,15 @@ const pageRoutes = [
 		}
 	},
 	{
-		url: '/:id/',
+		url: '/todo/:id/',
 		page: 'todo.eta',
 		getData(params) {
 			return todos.find(t => t.id === Number(params.id));
 		}
+	},
+	{
+		url: '/create/',
+		page: 'create.eta',
 	}
 ];
 

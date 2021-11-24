@@ -5,10 +5,21 @@
 		<link rel="stylesheet" href="/styles/style.css">
 	</head>
 	<body>
-		<header>Welcome to my todo list!</header>
+		<header>
+			<div class="layout-positioner">
+				<h2 class="header-title">Welcome to your todo list!</h2>
+				<p class="header-description">What is a ToDo List? The definition is a simple one. It’s a list of tasks you need to complete, or things that you want to do.</p>
+			</div>
+		</header>
 
-		<%~ it.body %>
+		<div class="layout-positioner main-content">
+			<%~ it.body %>
+		</div>
 
-		<footer><a href="https://github.com/dudina-ma">https://github.com/dudina-ma</a></footer>
+		<footer>
+			<div class="layout-positioner footer-flexbox">
+				<p class="footer-company-name">Dudina Maria, 2021 г.</p>
+				<a href="https://github.com/dudina-ma"><img src="/images/github.png" width="30px"></a></footer>
+			</div>
 	</body>
 </html>

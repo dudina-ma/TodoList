@@ -7,7 +7,7 @@
 	description: 'To buy eggs'
 },
 {
-	id: 1,
+	id: 2,
 	title: 'Wash clothes',
 	isDone: false,
 	category: 'private',
@@ -15,7 +15,7 @@
 	description: 'White clothes'
 },
 {
-	id: 1,
+	id: 3,
 	title: 'Wash the dishes',
 	isDone: true,
 	category: 'private',
