@@ -4,6 +4,7 @@ const path = require('path');
 const eta = require('eta');
 const mime = require('mime');
 const getJsonBody = require('body/json');
+const getFormBody = require('body/form')
 const Url = require('url-parse');
 
 const apiRoutes = require('./routes/apiRoutes');
@@ -17,12 +18,22 @@ const server = http.createServer((request, response) => {
 	const apiRoute = getMatchingRoute(url.pathname, request.method, apiRoutes);
 
 	if (apiRoute) {
-		getJsonBody(request, (_, body) => {
-			apiRoute.route.action(apiRoute.params, null, body);
-			response.setHeader('Content-Type', 'application/json');
-			response.statusCode = 200;
-			response.end();
-		});
+		const contentType = (request.headers['Content-Type'] || '').toLowerCase();
+		if (contentType === 'application/x-www-form-urlencoded') {
+			getFormBody(request, (error, body) => {
+				apiRoute.route.action(apiRoute.params, null, body);
+
+				// TODO: пока что тупо отправляем на индекс
+				response.statusCode = 302;
+				response.setHeader('Location', '/');
+				response.end();
+			});
+		} else if (contentType === 'application/json') {
+			sendError(response, 400); // TODO: потом сделаем обработку
+		} else {
+			// неизвестный контент-тайп, отправляем ошибку
+			sendError(response, 400);
+		}
 
 		return;
 	}
