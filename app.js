@@ -45,7 +45,7 @@ const server = http.createServer((request, response) => {
 	if (pageRoute) {
 		const filePath = path.join(__dirname, 'views', pageRoute.route.page);
 
-		const data = pageRoute.route.getData && pageRoute.route.getData(pageRoute.params);
+		const data = pageRoute.route.getData && pageRoute.route.getData(pageRoute.params, url.query);
 		eta.renderFile(filePath, data, (error, html) => {
 			// TODO: решать, какой надо код ошибки по error
 			if (error) {

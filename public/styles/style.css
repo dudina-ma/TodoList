@@ -121,15 +121,10 @@ h1 {
 .create-btn:active {
     background-color: white;
     color: #093001;
-
 }
 
 .todo-create-title {
     margin: 15px;
-}
-
-.create-form-field {
-    margin-bottom: 10px;
 }
 
 .delete-btn {
@@ -156,4 +151,43 @@ h1 {
 .todo-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.todo-controllers {
+    margin-right: 5px;
+}
+
+.edit-btn-img {
+    width: 20px;
+    height: 20px;
+}
+
+.create-form-grid {
+    display: grid;
+    grid-template-columns: 90px 300px;
+    grid-template-rows: 30px 30px 30px;
+    gap: 10px;
+}
+
+.close-btn {
+  background-image: url(/images/close.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 0;
+}
+
+.edit-link {
+    cursor: default;
+}
+
+.paging {
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
 }

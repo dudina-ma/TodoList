@@ -5,7 +5,6 @@
     <a href="/create/" class="create-btn">Create TODO</a>
 </div>
 
-
 <% for (const todo of it.todos) { %>
     <div class="todo <%= todo.isDone ? "done" : ""%>">
 
@@ -20,8 +19,9 @@
                 <% } %>
             </div>
 
-            <div>
-                <button type='button' class='delete-btn'>╳</button>
+            <div class="todo-controllers">
+                <a class="edit-link" href="#"><img class ="edit-btn-img" src="/images/edit.svg"></a>
+                <button type="button" class="close-btn"></button>
             </div>
         </div>
 
@@ -29,3 +29,9 @@
     </div>
 <% } %>
 
+<% const onePageTodosAmount = 5; %>
+<div class="paging">
+    <% for (let i = 0; i < Math.ceil(it.todos.length/onePageTodosAmount); i++) { %>
+        <span class="page"><%= i + 1 %></span>
+    <% } %>
+</div>

@@ -3,25 +3,17 @@
 <h2 class="todo-create-title">Create new TODO</h2>
 
 <form action="/api/todo/create/" method="post">
-    <div class="create-form-field">
-        <label>
-            Name <input type="text" name="title" size="30" maxlength="25">
-        </label>
+
+    <div class="create-form-grid">
+        <label for="create-title-id">Title</label>
+        <input type="text" name="title" id="create-title-id" maxlength="25">
+
+        <label for="create-description-id">Description</label>
+        <input type="text" name="description" id="create-description-id" maxlength="40">
+
+        <label for="create-urgency-id">Urgency</label>
+        <input type="checkbox" name="isUrgent" id="create-urgency-id">
     </div>
 
-    <div class="create-form-field">
-        <label>
-            Description <input type="text" name="description" size="35" maxlength="40">
-          </label>
-    </div>
-
-    <div class="create-form-field">
-        <label>
-            Urgency <input type="checkbox" name="isUrgent">
-          </label>
-    </div>
-
-
-      <input type="submit" class="create-btn" value="Create">
-
+    <input type="submit" class="create-btn" value="Create">
 </form>
