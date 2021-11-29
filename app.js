@@ -13,7 +13,7 @@ const { getMatchingRoute } = require('./routes/routeHelper');
 
 const server = http.createServer((request, response) => {
 	console.log(request.url);
-	const url = new Url(request.url);
+	const url = new Url(request.url, true);
 
 	const apiRoute = getMatchingRoute(url.pathname, request.method, apiRoutes);
 

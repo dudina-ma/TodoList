@@ -191,3 +191,18 @@ h1 {
     margin: 0 auto;
     text-align: center;
 }
+
+.page-number {
+    display: inline-block;
+    width: 20px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.current-page {
+    background-color: #093001;
+    color: white;
+    width: 30px;
+}

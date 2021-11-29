@@ -5,7 +5,11 @@
     <a href="/create/" class="create-btn">Create TODO</a>
 </div>
 
-<% for (const todo of it.todos) { %>
+<% const onePageTodosAmount = 2; %>
+
+<% for (let i = onePageTodosAmount * (it.currentPage - 1); i <= Math.min(onePageTodosAmount * (it.currentPage - 1) + 1, it.todos.length - 1); i++) { %>
+    <% let todo = it.todos[i];%>
+
     <div class="todo <%= todo.isDone ? "done" : ""%>">
 
         <div class="todo-header">
@@ -29,9 +33,13 @@
     </div>
 <% } %>
 
-<% const onePageTodosAmount = 5; %>
 <div class="paging">
-    <% for (let i = 0; i < Math.ceil(it.todos.length/onePageTodosAmount); i++) { %>
-        <span class="page"><%= i + 1 %></span>
+
+    <% for (let i = 1; i <= Math.ceil(it.todos.length/onePageTodosAmount); i++) { %>
+        <% if(Number(it.currentPage) === i) { %>
+            <a title="current page" class="page-number current-page"><%= i %></a>
+        <% } else { %>
+        <a href="?page=<%= i %>" class="page-number"><%= i   %></a>
+        <% } %>
     <% } %>
 </div>
