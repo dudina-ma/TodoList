@@ -187,14 +187,14 @@ h1 {
 }
 
 .paging {
-    width: 100px;
+    width: 200px;
     margin: 0 auto;
     text-align: center;
 }
 
 .page-number {
     display: inline-block;
-    width: 20px;
+    min-width: 20px;
     vertical-align: middle;
     margin-bottom: 5px;
     text-decoration: none;

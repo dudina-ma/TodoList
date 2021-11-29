@@ -54,6 +54,70 @@
 	isUrgent: false,
 	description: 'White clothes'
 },
+{
+	id: 2,
+	title: 'Wash clothes',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
+{
+	id: 2,
+	title: 'Wash clothes',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
+{
+	id: 2,
+	title: 'Wash clothes',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
+{
+	id: 2,
+	title: 'Wash clothes',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
+{
+	id: 2,
+	title: 'Wash clothes',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
+{
+	id: 2,
+	title: 'Wash clothes',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
+{
+	id: 2,
+	title: 'Wash clothes',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
+{
+	id: 2,
+	title: 'Wash clothes',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
 ];
 
 module.exports = { todos };

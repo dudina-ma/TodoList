@@ -39,12 +39,28 @@
 
     <% for (let i = 1; i <= lastPageNumber; i++) { %>
         <% if(i === Number(it.currentPage)) { %>
-            <% if (i - 1 > 0) { %>
-                <a href="?page=<%= i - 1%>" class="page-number">&lt;</a>
+            <% if (i >= 3) { %>
+                <a href="?page=<%= 1%>" class="page-number">1</a>
             <% } %>
+            <% if (i >= 4) { %>
+                <span class="page-number">…</span>
+            <% } %>
+
+            <% if (i - 1 > 0) { %>
+                <a href="?page=<%= i - 1%>" class="page-number"><%= i - 1 %></a>
+            <% } %>
+
             <a title="current page" class="page-number current-page"><%= i %></a>
+
             <% if(i + 1 <= lastPageNumber) { %>
-                <a href="?page=<%= i + 1%>" class="page-number">&gt;</a>
+                <a href="?page=<%= i + 1%>" class="page-number"><%= i + 1 %></a>
+            <% } %>
+
+            <% if (lastPageNumber - i >= 3) { %>
+                <span class="page-number">…</span>
+            <% } %>
+            <% if (lastPageNumber - i >= 2) { %>
+                <a href="?page=<%= lastPageNumber %>" class="page-number"><%= lastPageNumber %></a>
             <% } %>
         <% } %>
     <% } %>
