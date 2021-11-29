@@ -35,11 +35,17 @@
 
 <div class="paging">
 
-    <% for (let i = 1; i <= Math.ceil(it.todos.length/onePageTodosAmount); i++) { %>
-        <% if(Number(it.currentPage) === i) { %>
+    <% const lastPageNumber = Math.ceil(it.todos.length/onePageTodosAmount); %>
+
+    <% for (let i = 1; i <= lastPageNumber; i++) { %>
+        <% if(i === Number(it.currentPage)) { %>
+            <% if (i - 1 > 0) { %>
+                <a href="?page=<%= i - 1%>" class="page-number">&lt;</a>
+            <% } %>
             <a title="current page" class="page-number current-page"><%= i %></a>
-        <% } else { %>
-        <a href="?page=<%= i %>" class="page-number"><%= i   %></a>
+            <% if(i + 1 <= lastPageNumber) { %>
+                <a href="?page=<%= i + 1%>" class="page-number">&gt;</a>
+            <% } %>
         <% } %>
     <% } %>
 </div>
