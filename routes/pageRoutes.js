@@ -5,11 +5,7 @@ const pageRoutes = [
 		url: '/',
 		page: 'index.eta',
 		getData(params, queryParams) {
-			let isEmpty = true;
-			for (let key in queryParams) {
-				isEmpty = false;
-			}
-			let currentPage = isEmpty ? 1 : queryParams["page"];
+			let currentPage = queryParams.page ?? 1;
 			return {
 				todos: [...todos],
 				currentPage,

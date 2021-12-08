@@ -18,7 +18,16 @@ const apiRoutes = [
 				...body
 			});
 		}
-	}
+	},
+	{
+		url: '/api/todo/:id/delete/',
+		method: 'GET',
+		action(params) {
+			const idNumber = Number(params.id);
+			let todoIdToDelete = todos.findIndex(item => item.id === idNumber);
+			todos.splice(todoIdToDelete, 1);
+		}
+	},
 ]
 
 module.exports = apiRoutes;

@@ -25,7 +25,7 @@
 
             <div class="todo-controllers">
                 <a class="edit-link" href="#"><img class ="edit-btn-img" src="/images/edit.svg"></a>
-                <button type="button" class="close-btn"></button>
+                <button type="button" class="close-btn" data-todo-id="<%= todo.id %>"></button>
             </div>
         </div>
 
@@ -64,4 +64,6 @@
             <% } %>
         <% } %>
     <% } %>
+
+    <script src="/scripts/deleteTodo.js"></script>
 </div>

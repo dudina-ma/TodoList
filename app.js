@@ -29,11 +29,12 @@ const server = http.createServer((request, response) => {
 				response.setHeader('Location', '/');
 				response.end();
 			});
-		} else if (contentType === 'application/json') {
-			sendError(response, 400); // TODO: потом сделаем обработку
 		} else {
-			// неизвестный контент-тайп, отправляем ошибку
-			sendError(response, 400);
+			getJsonBody(request, (error, body) => {
+				var result = apiRoute.route.action(apiRoute.params, null, body);
+				response.statusCode = 200;
+				response.end(result);
+			});
 		}
 
 		return;

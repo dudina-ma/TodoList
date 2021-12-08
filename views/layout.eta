@@ -19,7 +19,8 @@
 		<footer>
 			<div class="layout-positioner footer-flexbox">
 				<p class="footer-company-name">Dudina Maria, 2021 г.</p>
-				<a href="https://github.com/dudina-ma"><img src="/images/github.png" width="30px"></a></footer>
+				<a href="https://github.com/dudina-ma"><img src="/images/github.png" width="30px"></a>
 			</div>
+		</footer>
 	</body>
 </html>
