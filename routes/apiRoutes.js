@@ -21,7 +21,7 @@ const apiRoutes = [
 	},
 	{
 		url: '/api/todo/:id/delete/',
-		method: 'GET',
+		method: 'POST',
 		action(params) {
 			const idNumber = Number(params.id);
 			let todoIdToDelete = todos.findIndex(item => item.id === idNumber);

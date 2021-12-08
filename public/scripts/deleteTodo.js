@@ -7,7 +7,7 @@ for (let closeBtn of closeBtns) {
 function handler(event) {
     const todoId = event.currentTarget.dataset.todoId;
 
-    fetch("/api/todo/" + todoId + "/delete/")
+    fetch("/api/todo/" + todoId + "/delete/", {method: 'POST'})
         .then(() => {
             window.location.href = '/';
         });
