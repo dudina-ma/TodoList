@@ -46,6 +46,22 @@
 	isUrgent: false,
 	description: 'White clothes'
 },
+{
+	id: 7,
+	title: '7',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
+{
+	id: 8,
+	title: '8',
+	isDone: false,
+	category: 'private',
+	isUrgent: false,
+	description: 'White clothes'
+},
 ];
 
 module.exports = { todos };

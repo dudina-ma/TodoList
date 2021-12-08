@@ -65,7 +65,7 @@ h1 {
 
 .todo {
     width: 400px;
-    height: 80px;
+    height: 75px;
     border: 1px solid black;
     margin-bottom: 5px;
 }
@@ -188,7 +188,7 @@ h1 {
 
 .paging {
     width: 200px;
-    margin: 0 auto;
+    margin: 10px auto;
     text-align: center;
 }
 
