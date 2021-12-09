@@ -9,6 +9,6 @@ function handler(event) {
 
     fetch("/api/todo/" + todoId + "/delete/", {method: 'POST'})
         .then(() => {
-            window.location.href = '/';
+            window.Modal.showAlert("Delete todo", "Todo has deleted", () => window.location.href = '/');
         });
 }

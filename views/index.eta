@@ -67,6 +67,4 @@
         <% } %>
     <% } %>
 
-    <script src="/scripts/deleteTodo.js"></script>
-    <script src="/scripts/checkTodo.js"></script>
 </div>

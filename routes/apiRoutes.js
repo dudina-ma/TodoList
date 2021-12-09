@@ -29,12 +29,12 @@ const apiRoutes = [
 		}
 	},
 	{
-		url: '/api/todo/:id/check/',
+		url: '/api/todo/:id/check/:checked/',
 		method: 'POST',
 		action(params) {
 			const idNumber = Number(params.id);
 			let todoIdToCheck = todos.findIndex(item => item.id === idNumber);
-			todos[todoIdToCheck].isDone = !todos[todoIdToCheck].isDone;
+			todos[todoIdToCheck].isDone = Boolean(params.checked);
 		}
 	},
 ]

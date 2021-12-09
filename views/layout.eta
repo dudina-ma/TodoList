@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="/styles/style.css">
+		<link rel="stylesheet" href="/styles/modal.css">
 	</head>
 	<body>
 		<header>
@@ -22,5 +23,8 @@
 				<a href="https://github.com/dudina-ma"><img src="/images/github.png" width="30px"></a>
 			</div>
 		</footer>
+		<script src="/scripts/deleteTodo.js"></script>
+    	<script src="/scripts/checkTodo.js"></script>
+		<script src="/scripts/modal.js"></script>
 	</body>
 </html>

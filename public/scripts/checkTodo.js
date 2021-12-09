@@ -9,7 +9,11 @@ function handler(event) {
 
     const todoToCheck = document.querySelector(`.todo[data-todo-id="${todoId}"]`);
 
-    fetch("/api/todo/" + todoId + "/check/", {method: 'POST'})
+    const todoToCheckCheckbox = document.querySelector(`.todo[data-todo-id="${todoId}"] input[type="checkbox"]`);
+
+    let isChecked = todoToCheckCheckbox.checked;
+
+    fetch("/api/todo/" + todoId + "/check/" + isChecked, {method: 'POST'})
         .then(() => {
             todoToCheck.classList.toggle('done');;
         });

@@ -88,7 +88,7 @@ h1 {
 }
 
 .done {
-    background-color: #b8ffce;
+    background-color: #a2c7ae;
     color: dimgray;
 }
 
@@ -205,4 +205,8 @@ h1 {
     background-color: #093001;
     color: white;
     width: 30px;
+}
+
+.search {
+    margin-bottom: 10px;
 }
