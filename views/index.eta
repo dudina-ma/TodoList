@@ -10,11 +10,11 @@
 <% for (let i = onePageTodosAmount * (it.currentPage - 1); i <= Math.min(onePageTodosAmount * it.currentPage - 1, it.todos.length - 1); i++) { %>
     <% let todo = it.todos[i];%>
 
-    <div class="todo <%= todo.isDone ? "done" : ""%>">
+    <div class="todo <%= todo.isDone ? "done" : ""%>" data-todo-id="<%= todo.id %>">
 
         <div class="todo-header">
             <div>
-                <input type="checkbox" class="todo-is-done" <%= todo.isDone ? "checked" : ""%>>
+                <input type="checkbox"  class="todo-is-done" <%= todo.isDone ? "checked" : ""%>>
 
                 <h2 class="todo-title"><%= todo.title %></h2>
 
@@ -68,4 +68,5 @@
     <% } %>
 
     <script src="/scripts/deleteTodo.js"></script>
+    <script src="/scripts/checkTodo.js"></script>
 </div>

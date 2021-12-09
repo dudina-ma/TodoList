@@ -28,6 +28,15 @@ const apiRoutes = [
 			todos.splice(todoIdToDelete, 1);
 		}
 	},
+	{
+		url: '/api/todo/:id/check/',
+		method: 'POST',
+		action(params) {
+			const idNumber = Number(params.id);
+			let todoIdToCheck = todos.findIndex(item => item.id === idNumber);
+			todos[todoIdToCheck].isDone = !todos[todoIdToCheck].isDone;
+		}
+	},
 ]
 
 module.exports = apiRoutes;
