@@ -33,7 +33,7 @@
             </div>
 
             <div class="todo-controllers">
-                <a class="edit-link" href="#"><img class ="edit-btn-img" src="/images/edit.svg"></a>
+                <a class="edit-link" href="<%= todo.id %>/edit/"><img class ="edit-btn-img" src="/images/edit.svg"></a>
                 <button type="button" class="delete-btn" data-todo-id="<%= todo.id %>"></button>
             </div>
         </div>

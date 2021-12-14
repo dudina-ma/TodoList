@@ -24,43 +24,43 @@
 },
 {
 	id: 4,
-	title: '4',
+	title: 'Visit a doctor',
 	isDone: false,
 	category: 'private',
 	isUrgent: false,
-	description: 'White clothes'
+	description: '12.24.2021'
 },
 {
 	id: 5,
-	title: '5',
+	title: 'Call to mom',
 	isDone: false,
 	category: 'private',
-	isUrgent: false,
-	description: 'White clothes'
+	isUrgent: true,
+	description: 'Tell about a new student program'
 },
 {
 	id: 6,
-	title: '6',
+	title: 'Return the book to Tom',
 	isDone: false,
 	category: 'private',
-	isUrgent: false,
-	description: 'White clothes'
+	isUrgent: true,
+	description: 'Twilight'
 },
 {
 	id: 7,
-	title: '7',
+	title: 'Feed the cats',
 	isDone: false,
 	category: 'private',
 	isUrgent: false,
-	description: 'White clothes'
+	description: 'tuesday, thursday, saturday, sunday'
 },
 {
 	id: 8,
-	title: '8',
+	title: 'Watch the film',
 	isDone: false,
 	category: 'private',
 	isUrgent: false,
-	description: 'White clothes'
+	description: 'Nobody'
 },
 ];
 

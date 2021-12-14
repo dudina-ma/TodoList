@@ -128,7 +128,7 @@ h1 {
 }
 
 .todo-create-title {
-    margin: 15px;
+    margin: 15px 15px 15px 0;
 }
 
 .todo-header {

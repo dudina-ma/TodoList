@@ -37,6 +37,17 @@ const apiRoutes = [
 			todos[todoIdToCheck].isDone = Boolean(params.checked);
 		}
 	},
+	{
+		url: '/api/todo/:id/edit/',
+		method: 'POST',
+		action(params, __, body) {
+			const idNumber = Number(params.id);
+			let todoIdToEdit = todos.findIndex(item => item.id === idNumber);
+			todos[todoIdToEdit].title = body.title;
+			todos[todoIdToEdit].description = body.description;
+			todos[todoIdToEdit].isUrgent = body.isUrgent;
+		}
+	},
 ]
 
 module.exports = apiRoutes;

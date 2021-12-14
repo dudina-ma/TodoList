@@ -32,6 +32,13 @@ const pageRoutes = [
 	{
 		url: '/create/',
 		page: 'create.eta',
+	},
+	{
+		url: '/:id/edit/',
+		page: 'edit.eta',
+		getData(params) {
+			return todos.find(t => t.id === Number(params.id));
+		}
 	}
 ];
 
