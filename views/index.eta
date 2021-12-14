@@ -22,19 +22,19 @@
     <div class="todo <%= todo.isDone ? "done" : ""%>" data-todo-id="<%= todo.id %>">
 
         <div class="todo-header">
-            <div>
+            <div class="todo-header-left">
                 <input type="checkbox"  class="todo-is-done" <%= todo.isDone ? "checked" : ""%>>
 
                 <h2 class="todo-title"><%= todo.title %></h2>
 
                 <% if(todo.isUrgent) { %>
-                    <img class ="urgent" src="/images/flames.png">
+                    <img class ="urgent" src="/images/fire.svg">
                 <% } %>
             </div>
 
             <div class="todo-controllers">
                 <a class="edit-link" href="#"><img class ="edit-btn-img" src="/images/edit.svg"></a>
-                <button type="button" class="close-btn" data-todo-id="<%= todo.id %>"></button>
+                <button type="button" class="delete-btn" data-todo-id="<%= todo.id %>"></button>
             </div>
         </div>
 
@@ -42,38 +42,4 @@
     </div>
 <% } %>
 
-<div class="paging">
-
-    <% const lastPageNumber = Math.ceil(it.todos.length/onePageTodosAmount); %>
-
-    <% if (lastPageNumber > 1) { %>
-        <% for (let i = 1; i <= lastPageNumber; i++) { %>
-            <% if(i === Number(it.currentPage)) { %>
-                <% if (i >= 3) { %>
-                    <a href="?page=<%= 1%>" class="page-number">1</a>
-                <% } %>
-                <% if (i >= 4) { %>
-                    <span class="page-number">…</span>
-                <% } %>
-
-                <% if (i - 1 > 0) { %>
-                    <a href="?page=<%= i - 1%>" class="page-number"><%= i - 1 %></a>
-                <% } %>
-
-                <a title="current page" class="page-number current-page"><%= i %></a>
-
-                <% if(i + 1 <= lastPageNumber) { %>
-                    <a href="?page=<%= i + 1%>" class="page-number"><%= i + 1 %></a>
-                <% } %>
-
-                <% if (lastPageNumber - i >= 3) { %>
-                    <span class="page-number">…</span>
-                <% } %>
-                <% if (lastPageNumber - i >= 2) { %>
-                    <a href="?page=<%= lastPageNumber %>" class="page-number"><%= lastPageNumber %></a>
-                <% } %>
-            <% } %>
-        <% } %>
-    <% } %>
-
-</div>
+<%~ includeFile('./paging.eta', {onePageTodosAmount, todos: it.todos, currentPage: it.currentPage}) %>

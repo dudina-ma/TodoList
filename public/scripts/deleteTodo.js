@@ -1,7 +1,7 @@
-const closeBtns = document.querySelectorAll(".close-btn");
+const deleteBtns = document.querySelectorAll(".delete-btn");
 
-for (let closeBtn of closeBtns) {
-    closeBtn.addEventListener("click", handler);
+for (let deleteBtn of deleteBtns) {
+    deleteBtn.addEventListener("click", handler);
 }
 
 function handler(event) {

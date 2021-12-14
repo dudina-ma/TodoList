@@ -88,7 +88,7 @@ h1 {
 }
 
 .done {
-    background-color: #a2c7ae;
+    background-color: #cde9d5;
     color: dimgray;
 }
 
@@ -97,8 +97,9 @@ h1 {
 }
 
 .urgent {
-    margin: 5px;
-    vertical-align: bottom;
+    height: 20px;
+    width: 20px;
+    vertical-align: baseline;
 }
 
 .create-btn {
@@ -130,27 +131,6 @@ h1 {
     margin: 15px;
 }
 
-.delete-btn {
-    line-height: 100%;
-    padding: 0;
-    border: none;
-    background-color: #093001;
-    color: white;
-    margin-bottom: auto;
-    margin-top: auto;
-    font-size: 15px;
-    margin: 5px;
-}
-
-.delete-btn:hover {
-    transform: scale(1.1);
-}
-
-.delete-btn:active {
-    background-color: white;
-    color: #093001;
-}
-
 .todo-header {
     display: flex;
     justify-content: space-between;
@@ -161,11 +141,6 @@ h1 {
     margin-right: 5px;
 }
 
-.edit-btn-img {
-    width: 20px;
-    height: 20px;
-}
-
 .create-form-grid {
     display: grid;
     grid-template-columns: 90px 300px;
@@ -173,8 +148,8 @@ h1 {
     gap: 10px;
 }
 
-.close-btn {
-  background-image: url(/images/close.svg);
+.delete-btn {
+  background-image: url(/images/delete.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20px 20px;
@@ -183,6 +158,19 @@ h1 {
   height: 20px;
   background-color: rgba(255, 255, 255, 0);
   padding: 0;
+}
+
+.delete-btn:hover {
+    transform: scale(1.1);
+}
+
+.delete-btn:active {
+    color: #093001;
+}
+
+.edit-btn-img {
+    width: 20px;
+    height: 20px;
 }
 
 .edit-link {
@@ -251,4 +239,25 @@ h1 {
     background-color: rgba(255, 255, 255, 0);
     padding: 0;
     vertical-align: middle;
-  }
+}
+
+.todo-header-left input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+    padding: 0;
+    vertical-align: top;
+    outline: none;
+    transition: background 0.3s ease;
+    border: 1px solid #093001;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.todo-header-left input[type=checkbox]:checked {
+	background-image: url(/images/check.svg);
+    background-size: 15px;
+}
