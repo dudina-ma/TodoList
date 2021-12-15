@@ -34,7 +34,7 @@ const apiRoutes = [
 		action(params) {
 			const idNumber = Number(params.id);
 			let todoIdToCheck = todos.findIndex(item => item.id === idNumber);
-			todos[todoIdToCheck].isDone = Boolean(params.checked);
+			todos[todoIdToCheck].isDone = params.checked === "true";
 		}
 	},
 	{

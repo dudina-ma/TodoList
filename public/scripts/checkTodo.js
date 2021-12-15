@@ -1,20 +1,13 @@
-const checkboxesTodoIsDone = document.querySelectorAll(".todo");
+const todos = document.querySelectorAll(".todo");
 
-for (let checkboxTodoIsDone of checkboxesTodoIsDone) {
-    checkboxTodoIsDone.addEventListener("change", handler);
+for (let todo of todos) {
+    todo.addEventListener("change", handler);
 }
 
 function handler(event) {
-    const todoId = event.currentTarget.dataset.todoId;
-
-    const todoToCheck = document.querySelector(`.todo[data-todo-id="${todoId}"]`);
-
-    const todoToCheckCheckbox = document.querySelector(`.todo[data-todo-id="${todoId}"] input[type="checkbox"]`);
-
-    let isChecked = todoToCheckCheckbox.checked;
-
-    fetch("/api/todo/" + todoId + "/check/" + isChecked, {method: 'POST'})
+    const todo = event.currentTarget;
+    fetch("/api/todo/" + todo.dataset.todoId + "/check/" + event.target.checked, {method: 'POST'})
         .then(() => {
-            todoToCheck.classList.toggle('done');;
+            todo.classList.toggle('done');;
         });
 }
