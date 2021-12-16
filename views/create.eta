@@ -2,7 +2,7 @@
 
 <h2 class="todo-create-title">Create new TODO</h2>
 
-<form action="/api/todo/create/" method="post" class="create-form">
+<form class="create-form">
 
     <div class="create-form-grid">
         <label for="create-title-id">Title</label>
