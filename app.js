@@ -18,24 +18,11 @@ const server = http.createServer((request, response) => {
 	const apiRoute = getMatchingRoute(url.pathname, request.method, apiRoutes);
 
 	if (apiRoute) {
-		const contentType = (request.headers['content-type'] || '').toLowerCase();
-
-		if (contentType === 'application/x-www-form-urlencoded') {
-			getFormBody(request, (error, body) => {
-				apiRoute.route.action(apiRoute.params, null, body);
-
-				// TODO: пока что тупо отправляем на индекс
-				response.statusCode = 302;
-				response.setHeader('Location', '/');
-				response.end();
-			});
-		} else {
-			getJsonBody(request, (error, body) => {
-				var result = apiRoute.route.action(apiRoute.params, null, body);
-				response.statusCode = 200;
-				response.end(result);
-			});
-		}
+		getJsonBody(request, (error, body) => {
+			const result = apiRoute.route.action(apiRoute.params, null, body);
+			response.statusCode = 200;
+			response.end(result);
+		});
 
 		return;
 	}

@@ -1,3 +1,4 @@
+// check
 const todos = document.querySelectorAll(".todo");
 
 for (let todo of todos) {
@@ -12,6 +13,7 @@ function handlerCheck(event) {
         });
 }
 
+// delete
 const deleteBtns = document.querySelectorAll(".delete-btn");
 
 for (let deleteBtn of deleteBtns) {
@@ -23,6 +25,31 @@ function handlerDelete(event) {
 
     fetch("/api/todo/" + todoId + "/delete/", {method: 'POST'})
         .then(() => {
-            window.Modal.showAlert("Delete todo", "Todo has deleted", () => window.location.href = '/');
+            window.Modal.showAlert("Delete todo", "Todo has been deleted", () => window.location.href = '/');
         });
+}
+
+// submit form
+const createForm = document.querySelector(".create-form");
+createForm.addEventListener("submit", handlerCreate);
+
+function handlerCreate(event) {
+    event.preventDefault();
+
+    let formData = new FormData(event.target);
+
+    let newTodo = {};
+    formData.forEach((value, key) => newTodo[key] = value);
+
+    fetch("/api/todo/create/",
+        {
+            method: 'POST',
+            body: JSON.stringify(newTodo),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).
+                then(() => {
+                    window.Modal.showAlert("Create todo", "Todo has been created", () => window.location.href = '/');
+                });
 }

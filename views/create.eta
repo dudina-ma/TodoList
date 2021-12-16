@@ -2,7 +2,7 @@
 
 <h2 class="todo-create-title">Create new TODO</h2>
 
-<form action="/api/todo/create/" method="post">
+<form action="/api/todo/create/" method="post" class="create-form">
 
     <div class="create-form-grid">
         <label for="create-title-id">Title</label>
@@ -12,7 +12,7 @@
         <input type="text" name="description" id="create-description-id" maxlength="40">
 
         <label for="create-urgency-id">Urgency</label>
-        <input type="checkbox" name="isUrgent" id="create-urgency-id">
+        <input type="checkbox" name="is-urgent" id="create-urgency-id">
     </div>
 
     <input type="submit" class="create-btn" value="Create">
