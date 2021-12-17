@@ -23,7 +23,9 @@
 				<a href="https://github.com/dudina-ma"><img src="/images/github.png" width="30px"></a>
 			</div>
 		</footer>
-    	<script src="/scripts/script.js"></script>
+    	<script src="/scripts/scriptIndex.js"></script>
+		<script src="/scripts/scriptCreate.js"></script>
+		<script src="/scripts/scriptEdit.js"></script>
 		<script src="/scripts/modal.js"></script>
 	</body>
 </html>
