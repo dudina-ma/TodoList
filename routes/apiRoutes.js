@@ -22,7 +22,7 @@ const apiRoutes = [
 			const titleHasSwearing = checkHasSwearing(body.title);
 
 			if (!isTitleLengthOk) {
-				addError(validationResult, "title", "The title is too long. It should be less than " + titleMaxLength + " symbols.")
+				addError(validationResult, "title", "The title is too long. It must be shorter than " + titleMaxLength + " symbols.")
 			}
 
 			if (titleHasSwearing) {

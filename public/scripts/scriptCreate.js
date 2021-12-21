@@ -2,13 +2,23 @@
 const createForm = document.querySelector(".create-form");
 createForm.addEventListener("submit", handlerCreate);
 
-const title = document.querySelector("input[name='title']");
-title.addEventListener("focus", () => {
-    title.classList.remove("error");
-    const notificationOnPage = document.querySelector(".create-notification");
-    if (notificationOnPage) {
-        notificationOnPage.textContent = "";
+let fieldHasBeenChanged = false;
+
+function clearNotifications() {
+    const notificationsOnPage = document.querySelectorAll(".create-notification");
+    if (notificationsOnPage) {
+        for (let notificationOnPage of notificationsOnPage) {
+            notificationOnPage.remove();
+        }
     }
+}
+
+
+const title = document.querySelector("input[name='title']");
+title.addEventListener("input", () => {
+    fieldHasBeenChanged = true;
+    title.classList.remove("error");
+    clearNotifications();
 });
 
 function handlerCreate(event) {
@@ -29,15 +39,16 @@ function handlerCreate(event) {
     ).then(result => {
         if ("title" in result) {
             title.classList.add("error");
-            const notificationOnPage = document.querySelector(".create-notification");
-            if (notificationOnPage) {
-                notificationOnPage.textContent = result.title;
-            } else {
+            if (!fieldHasBeenChanged) {
+                clearNotifications();
+            }
+            for (let i = 0; i < result.title.length; i++) {
                 const notification = document.createElement("div");
                 notification.classList.add("create-notification");
-                notification.textContent = result.title;
+                notification.textContent = result.title[i];
                 const titleNotificationPlace = document.querySelector(".title-notification-place");
                 titleNotificationPlace.append(notification);
+                fieldHasBeenChanged = false;
             }
         } else {
             window.Modal.showAlert("Create todo", "Todo has been created", () => window.location.href = '/');
