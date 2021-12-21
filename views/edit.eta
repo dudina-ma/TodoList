@@ -17,3 +17,5 @@
 
     <input type="submit" class="create-btn" value="Edit">
 </form>
+
+<script src="/scripts/scriptEdit.js"></script>

@@ -20,8 +20,9 @@ const server = http.createServer((request, response) => {
 	if (apiRoute) {
 		getJsonBody(request, (error, body) => {
 			const result = apiRoute.route.action(apiRoute.params, null, body);
+			response.setHeader('Content-Type', 'application/json');
 			response.statusCode = 200;
-			response.end(result);
+			response.end(JSON.stringify(result));
 		});
 
 		return;

@@ -144,8 +144,17 @@ h1 {
 .create-form-grid {
     display: grid;
     grid-template-columns: 90px 300px;
-    grid-template-rows: 30px 30px 30px;
+    grid-template-rows: auto auto auto;
     gap: 10px;
+}
+
+.create-input-text {
+    width: 290px;
+    height: 20px;
+}
+
+.create-label {
+    margin-bottom: 10px;
 }
 
 .delete-btn {
@@ -261,3 +270,20 @@ h1 {
 	background-image: url(/images/check.svg);
     background-size: 15px;
 }
+
+.error {
+    border: none;
+    outline: 1px red solid;
+    color: red;
+}
+
+.error.create-input-text:focus {
+    outline: 1px red solid;
+}
+
+.create-notification {
+    font-size: 14px;
+    color: red;
+    margin-top: 5px;
+}
+

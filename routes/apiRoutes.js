@@ -1,4 +1,7 @@
 ﻿const { todos } = require('../store');
+const { checkFieldLength } = require('../validation/checkFieldLength');
+const { checkHasSwearing } = require('../validation/checkHasSwearing');
+const { addError } = require('../validation/addError');
 
 const apiRoutes = [
 	{
@@ -12,11 +15,27 @@ const apiRoutes = [
 		url: '/api/todo/create/',
 		method: 'POST',
 		action(_, __, body) {
+			const validationResult = {};
+
+			const titleMaxLength = 15;
+			const isTitleLengthOk = checkFieldLength(body.title, titleMaxLength);
+			const titleHasSwearing = checkHasSwearing(body.title);
+
+			if (!isTitleLengthOk) {
+				addError(validationResult, "title", "The title is too long. It should be less than " + titleMaxLength + " symbols.")
+			}
+
+			if (titleHasSwearing) {
+				addError(validationResult, "title", "Title contains a swearing. Please, reformulate it.")
+			}
+
 			const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
 			todos.push({
 				id: newId,
 				...body
 			});
+
+			return validationResult;
 		}
 	},
 	{
