@@ -18,22 +18,22 @@ const apiRoutes = [
 		action(_, __, body) {
 			const validationResult = {};
 
-			function checkField(field, fieldType, fieldMaxLength, validationResult, shouldCheckEmptiness) {
+			function checkField(field, fieldName, fieldMaxLength, validationResult, shouldCheckEmptiness) {
 				const isFieldLengthOk = checkFieldLength(field, fieldMaxLength);
 				const fieldHasSwearing = checkHasSwearing(field);
 				const fieldIsEmpty = checkFieldIsEmpty(field);
 
 				if (!isFieldLengthOk) {
-					addError(validationResult, fieldType, "The field is too long. It must be shorter than " + fieldMaxLength + " symbols.");
+					addError(validationResult, fieldName, "The field is too long. It must be shorter than " + fieldMaxLength + " symbols.");
 				}
 
 				if (fieldHasSwearing) {
-					addError(validationResult, fieldType, "Field contains a swearing. Please, reformulate it.");
+					addError(validationResult, fieldName, "Field contains a swearing. Please, reformulate it.");
 				}
 
 				if (shouldCheckEmptiness) {
 					if (fieldIsEmpty) {
-						addError(validationResult, fieldType, "Field is required.");
+						addError(validationResult, fieldName, "Field is required.");
 					}
 				}
 			}

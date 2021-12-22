@@ -1,33 +1,28 @@
 // submit createForm
-const createForm = document.querySelector(".create-form");
-createForm.addEventListener("submit", handlerCreate);
 
-function clearNotifications() {
-    const notificationsOnPage = document.querySelectorAll(".create-notification");
-    if (notificationsOnPage) {
-        for (let notificationOnPage of notificationsOnPage) {
-            notificationOnPage.remove();
-        }
+const createForm = document.querySelector(".create-form");
+
+function clearValidationErrors() {
+    const validationErrorsOnPage = document.querySelectorAll(".validation-error");
+    for (let validationErrorOnPage of validationErrorsOnPage) {
+        validationErrorOnPage.remove();
+    }
+    const fieldsWithError = document.querySelectorAll(".error");
+    for (let fieldWithError of fieldsWithError) {
+        fieldWithError.classList.remove("error");
     }
 }
 
-let titleHasBeenChanged = false;
+function clearValidationErrorsOnInput(form) {
+    form.addEventListener("input", () => {
+        clearValidationErrors();
+    });
 
-const title = document.querySelector("input[name='title']");
-title.addEventListener("input", () => {
-    titleHasBeenChanged = true;
-    title.classList.remove("error");
-    clearNotifications();
-});
+}
 
-let descriptionHasBeenChanged = false;
+clearValidationErrorsOnInput(createForm);
 
-const description = document.querySelector("input[name='description']");
-title.addEventListener("input", () => {
-    descriptionHasBeenChanged = true;
-    description.classList.remove("error");
-    clearNotifications();
-});
+createForm.addEventListener("submit", handlerCreate);
 
 function handlerCreate(event) {
     event.preventDefault();
@@ -36,6 +31,22 @@ function handlerCreate(event) {
 
     let newTodo = {};
     formData.forEach((value, key) => newTodo[key] = value);
+
+    clearValidationErrors();
+
+    function addValidationErrors(validationResults) {
+        for (let result of Object.keys(validationResults)) {
+            const field = document.querySelector("input[name='" + result + "']");
+            field.classList.add("error");
+            for (let i = 0; i < validationResults[result].length; i++) {
+                const validationError = document.createElement("div");
+                validationError.classList.add("validation-error");
+                validationError.textContent = validationResults[result][i];
+                const validationErrorPlace = document.querySelector("." + result + "-validation-error-place");
+                validationErrorPlace.append(validationError);
+            }
+        }
+    }
 
     fetch("/api/todo/create/", {
         method: 'POST',
@@ -46,39 +57,9 @@ function handlerCreate(event) {
     }).then(response => response.json()
     ).then(result => {
         if (Object.keys(result).length !== 0) {
-            if ("title" in result) {
-                title.classList.add("error");
-                if (!titleHasBeenChanged) {
-                    clearNotifications();
-                }
-                for (let i = 0; i < result.title.length; i++) {
-                    const notification = document.createElement("div");
-                    notification.classList.add("create-notification");
-                    notification.textContent = result.title[i];
-                    const titleNotificationPlace = document.querySelector(".title-notification-place");
-                    titleNotificationPlace.append(notification);
-                    titleHasBeenChanged = false;
-                }
-            }
-            if ("description" in result) {
-                description.classList.add("error");
-                if (!descriptionHasBeenChanged) {
-                    clearNotifications();
-                }
-                for (let i = 0; i < result.description.length; i++) {
-                    const notification = document.createElement("div");
-                    notification.classList.add("create-notification");
-                    notification.textContent = result.description[i];
-                    const descriptionNotificationPlace = document.querySelector(".description-notification-place");
-                    descriptionNotificationPlace.append(notification);
-                    descriptionHasBeenChanged = false;
-                }
-            }
+            addValidationErrors(result);
         } else {
             window.Modal.showAlert("Create todo", "Todo has been created", () => window.location.href = '/');
         }
-
-
-
     });
 }

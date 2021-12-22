@@ -8,13 +8,13 @@
         <label for="create-title-id" class="create-label">Title</label>
         <div>
             <input type="text" name="title" id="create-title-id" maxlength="25" class="create-input-text">
-            <div class="title-notification-place"></div>
+            <div class="title-validation-error-place"></div>
         </div>
 
         <label for="create-description-id" class="create-label">Description</label>
         <div>
             <input type="text" name="description" id="create-description-id" maxlength="35" class="create-input-text">
-            <div class="description-notification-place"></div>
+            <div class="description-validation-error-place"></div>
         </div>
 
         <label for="create-urgency-id" class="create-label">Urgency</label>
