@@ -18,22 +18,28 @@ const apiRoutes = [
 		action(_, __, body) {
 			const validationResult = {};
 
-			const titleMaxLength = 15;
-			const isTitleLengthOk = checkFieldLength(body.title, titleMaxLength);
-			const titleHasSwearing = checkHasSwearing(body.title);
-			const titleIsEmpty = checkFieldIsEmpty(body.title);
+			function checkField(field, fieldType, fieldMaxLength, validationResult, shouldCheckEmptiness) {
+				const isFieldLengthOk = checkFieldLength(field, fieldMaxLength);
+				const fieldHasSwearing = checkHasSwearing(field);
+				const fieldIsEmpty = checkFieldIsEmpty(field);
 
-			if (!isTitleLengthOk) {
-				addError(validationResult, "title", "The title is too long. It must be shorter than " + titleMaxLength + " symbols.");
+				if (!isFieldLengthOk) {
+					addError(validationResult, fieldType, "The field is too long. It must be shorter than " + fieldMaxLength + " symbols.");
+				}
+
+				if (fieldHasSwearing) {
+					addError(validationResult, fieldType, "Field contains a swearing. Please, reformulate it.");
+				}
+
+				if (shouldCheckEmptiness) {
+					if (fieldIsEmpty) {
+						addError(validationResult, fieldType, "Field is required.");
+					}
+				}
 			}
 
-			if (titleHasSwearing) {
-				addError(validationResult, "title", "Title contains a swearing. Please, reformulate it.");
-			}
-
-			if (titleIsEmpty) {
-				addError(validationResult, "title", "Title is a necessary field.");
-			}
+			checkField(body.title, "title", 15, validationResult, true);
+			checkField(body.description, "description", 25, validationResult, false);
 
 			const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
 			todos.push({
