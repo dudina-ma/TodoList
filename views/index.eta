@@ -41,7 +41,7 @@
         <p class="todo-description"><%= todo.description %></p>
     </div>
 
-    <script src="/scripts/scriptIndex.js"></script>
 <% } %>
+<script src="/scripts/scriptIndex.js"></script>
 
 <%~ includeFile('./paging.eta', {onePageTodosAmount, todos: it.todos, currentPage: it.currentPage}) %>

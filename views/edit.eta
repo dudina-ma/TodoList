@@ -5,14 +5,21 @@
 <form class="edit-form" data-todo-id="<%= it.id %>">
 
     <div class="create-form-grid">
-        <label for="create-title-id">Title</label>
-        <input type="text" name="title" id="create-title-id" maxlength="25" value="<%= it.title %>">
+        <label for="create-title-id" class="create-label">Title</label>
+        <div>
+            <input type="text" name="title" id="create-title-id" maxlength="25" class="create-input-text"value="<%= it.title %>">
+            <div class="title-validation-error-place"></div>
+        </div>
 
-        <label for="create-description-id">Description</label>
-        <input type="text" name="description" id="create-description-id" maxlength="40" value="<%= it.description %>">
+        <label for="create-description-id" class="create-label">Description</label>
+        <div>
+            <input type="text" name="description" id="create-description-id" maxlength="40" class="create-input-text" value="<%= it.description %>">
+            <div class="description-validation-error-place"></div>
+        </div>
 
-        <label for="create-urgency-id">Urgency</label>
-        <input type="checkbox" name="isUrgent" id="create-urgency-id" <%= it.isUrgent ? "checked" : ""%>>
+
+        <label for="create-urgency-id" class="create-label">Urgency</label>
+        <input type="checkbox" name="is-urgent" id="create-urgency-id"<%= it.isUrgent ? "checked" : ""%>>
     </div>
 
     <input type="submit" class="create-btn" value="Edit">

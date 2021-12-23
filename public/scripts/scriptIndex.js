@@ -24,9 +24,11 @@
     function handlerDelete(event) {
         const todoId = event.currentTarget.dataset.todoId;
 
-        fetch("/api/todo/" + todoId + "/delete/", {method: 'POST'})
-            .then(() => {
-                window.Modal.showAlert("Delete todo", "Todo has been deleted", () => window.location.href = '/');
-            });
+        window.Modal.showConfirm("Delete todo", "Do you really want to delete todo?", onConfirmDelete);
+
+        function onConfirmDelete() {
+            fetch("/api/todo/" + todoId + "/delete/", {method: 'POST'})
+            .then(() => window.location.href = '/');
+        }
     }
 })();
