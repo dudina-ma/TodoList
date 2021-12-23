@@ -59,7 +59,7 @@ function handlerCreate(event) {
         if (Object.keys(result).length !== 0) {
             addValidationErrors(result);
         } else {
-            window.Modal.showAlert("Create todo", "Todo has been created", () => window.location.href = '/');
+            window.location.href = '/';
         }
     });
 }

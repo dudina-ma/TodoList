@@ -19,6 +19,6 @@ function handlerEdit(event) {
             'Content-Type': 'application/json',
         },
     }).then(() => {
-            window.Modal.showAlert("Create todo", "Todo has been edited", () => window.location.href = '/');
+        window.location.href = '/';
     });
 }
