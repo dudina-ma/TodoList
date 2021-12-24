@@ -4,22 +4,22 @@
 
 <div class="title-create-flexbox">
     <h1>Categories</h1>
-    <a href="/create/" class="create-btn">Create category</a>
+    <button type="button" class="create-btn">Create category</button>
 </div>
 
-<div class="search-flex">
-    <form action="/categories/" method="get" class="search-form">
-        <input type="text" name="search" class="search" placeholder="Search category..." value="<%= it.searchString ? it.searchString : ""%>">
-        <button type="submit" class="search-submit"></button>
-    </form>
-    <a href="/categories" class="back-to-list-btn categories-page">Back to all categories</a>
-</div>
+<div class="category-create"></div>
 
 <% const onePageCategoriesAmount = 8; %>
 
-<% for (let i = 0; i < it.categories.length; i++) { %>
-    <% let category = it.categories[i];%>
+<ul class="categories-list">
+    <% for (let i = 0; i < it.categories.length; i++) { %>
+        <% let category = it.categories[i];%>
 
-    <div class="сategory"><%= category.title %></div>
+        <li class="сategory"><%= category.title %></li>
 
-<% } %>
+    <% } %>
+</ul>
+
+<script src="/scripts/scriptCategories.js"></script>
+
+

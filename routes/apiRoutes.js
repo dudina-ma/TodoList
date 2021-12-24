@@ -1,8 +1,6 @@
 ﻿const { todos } = require('../store');
-const { checkFieldLength } = require('../validation/checkFieldLength');
-const { checkHasSwearing } = require('../validation/checkHasSwearing');
-const { addError } = require('../validation/addError');
-const { checkFieldIsEmpty } = require('../validation/checkFieldIsEmpty');
+const { checkField } = require('../validation/checkField');
+const { categories } = require('../store');
 
 const apiRoutes = [
 	{
@@ -17,26 +15,6 @@ const apiRoutes = [
 		method: 'POST',
 		action(_, __, body) {
 			const validationResult = {};
-
-			function checkField(field, fieldName, fieldMaxLength, validationResult, shouldCheckEmptiness) {
-				const isFieldLengthOk = checkFieldLength(field, fieldMaxLength);
-				const fieldHasSwearing = checkHasSwearing(field);
-				const fieldIsEmpty = checkFieldIsEmpty(field);
-
-				if (!isFieldLengthOk) {
-					addError(validationResult, fieldName, "The field is too long. It must be shorter than " + fieldMaxLength + " symbols.");
-				}
-
-				if (fieldHasSwearing) {
-					addError(validationResult, fieldName, "Field contains a swearing. Please, reformulate it.");
-				}
-
-				if (shouldCheckEmptiness) {
-					if (fieldIsEmpty) {
-						addError(validationResult, fieldName, "Field is required.");
-					}
-				}
-			}
 
 			checkField(body.title, "title", 15, validationResult, true);
 			checkField(body.description, "description", 25, validationResult, false);
@@ -77,6 +55,23 @@ const apiRoutes = [
 			todos[todoIdToEdit].title = body.title;
 			todos[todoIdToEdit].description = body.description;
 			todos[todoIdToEdit].isUrgent = body.isUrgent;
+		}
+	},
+	{
+		url: '/api/category/create/',
+		method: 'POST',
+		action(_, __, body) {
+			const validationResult = {};
+
+			checkField(body.title, "title", 15, validationResult, true);
+
+			const newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
+			categories.push({
+				id: newId,
+				...body
+			});
+
+			return validationResult;
 		}
 	},
 ]

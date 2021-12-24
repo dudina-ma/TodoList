@@ -104,11 +104,11 @@ h1 {
 }
 
 .create-btn {
-    width: 120px;
+    width: 140px;
     height: 30px;
 }
 
-.create-btn, .back-to-list-btn {
+.create-btn, .back-to-list-btn, .category-create-form-btn {
     text-decoration: none;
     display: block;
     background-color: #093001;
@@ -117,6 +117,10 @@ h1 {
     line-height: 30px;
     border: none;
     font-size: 16px;
+}
+
+.category-create-form-btn {
+    display: inline-block;
 }
 
 .create-btn:hover, .back-to-list-btn:hover {
@@ -152,10 +156,6 @@ h1 {
 .create-input-text {
     width: 290px;
     height: 20px;
-}
-
-.create-label {
-    margin-bottom: 10px;
 }
 
 .delete-btn {
@@ -315,10 +315,7 @@ h1 {
 }
 
 .сategory {
-    display: inline-block;
-    width: 300px;
-    height: 30px;
-    border: 1px solid #093001;
+    margin-bottom: 10px;
 }
 
 .back-to-list-link {
@@ -333,5 +330,10 @@ h1 {
 
 .back-to-list-link:visited {
     color: #093001;
+}
+
+.category-create-form-field {
+    height: 25px;
+    margin-right: 10px;
 }
 
