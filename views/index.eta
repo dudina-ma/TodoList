@@ -1,5 +1,7 @@
 ﻿<% layout('./layout') %>
 
+<a href="/categories/" class="categories-link">Categories</a>
+
 <div class="title-create-flexbox">
     <h1>My TODO list</h1>
     <a href="/create/" class="create-btn">Create TODO</a>
@@ -14,7 +16,7 @@
     <a href="/" class="back-to-list-btn">Back to the list</a>
 </div>
 
-<% const onePageTodosAmount = 6; %>
+<% const onePageTodosAmount = 5; %>
 
 <% for (let i = onePageTodosAmount * (it.currentPage - 1); i <= Math.min(onePageTodosAmount * it.currentPage - 1, it.todos.length - 1); i++) { %>
     <% let todo = it.todos[i];%>
@@ -39,6 +41,8 @@
         </div>
 
         <p class="todo-description"><%= todo.description %></p>
+
+        <p class="todo-category"><%= todo.category %></p>
     </div>
 
 <% } %>
