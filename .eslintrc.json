@@ -24,6 +24,17 @@
 		"semi": [
 			"error",
 			"always"
+		],
+		"keyword-spacing": "error",
+		"func-call-spacing": [
+			"error",
+			"never"
+		],
+		"no-trailing-spaces": "error",
+		"no-multiple-empty-lines": "error",
+		"brace-style": [
+			"error",
+			"1tbs"
 		]
 	}
 }
