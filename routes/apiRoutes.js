@@ -16,8 +16,8 @@ const apiRoutes = [
 		action(_, __, body) {
 			const validationResult = {};
 
-			checkField(body.title, "title", 15, validationResult, true);
-			checkField(body.description, "description", 25, validationResult, false);
+			checkField(body.title, 'title', 15, validationResult, true);
+			checkField(body.description, 'description', 25, validationResult, false);
 
 			const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
 			todos.push({
@@ -43,7 +43,7 @@ const apiRoutes = [
 		action(params) {
 			const idNumber = Number(params.id);
 			let todoIdToCheck = todos.findIndex(item => item.id === idNumber);
-			todos[todoIdToCheck].isDone = params.checked === "true";
+			todos[todoIdToCheck].isDone = params.checked === 'true';
 		}
 	},
 	{
@@ -63,7 +63,7 @@ const apiRoutes = [
 		action(_, __, body) {
 			const validationResult = {};
 
-			checkField(body.title, "title", 15, validationResult, true);
+			checkField(body.title, 'title', 15, validationResult, true);
 
 			const newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
 			categories.push({
@@ -74,6 +74,6 @@ const apiRoutes = [
 			return validationResult;
 		}
 	},
-]
+];
 
 module.exports = apiRoutes;

@@ -4,7 +4,6 @@ const path = require('path');
 const eta = require('eta');
 const mime = require('mime');
 const getJsonBody = require('body/json');
-const getFormBody = require('body/form')
 const Url = require('url-parse');
 
 const apiRoutes = require('./routes/apiRoutes');

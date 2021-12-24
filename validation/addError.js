@@ -1,13 +1,13 @@
 function addError(validationResult, field, notificationText) {
-    let errorArray = [];
+	let errorArray = [];
 
-    if (field in validationResult) {
-        errorArray = validationResult[field];
-    }
+	if (field in validationResult) {
+		errorArray = validationResult[field];
+	}
 
-    errorArray.push(notificationText);
+	errorArray.push(notificationText);
 
-    validationResult[field] = errorArray;
+	validationResult[field] = errorArray;
 }
 
 module.exports = {

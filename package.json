@@ -1,18 +1,22 @@
 {
-  "name": "todolist",
-  "version": "0.1.0",
-  "description": "A simple todo list",
-  "main": "app.js",
-  "scripts": {
-    "start": "node --inspect app.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body": "^5.1.0",
-    "eta": "^1.12.3",
-    "mime": "^2.5.2",
-    "url-parse": "^1.5.3"
-  }
+	"name": "todolist",
+	"version": "0.1.0",
+	"description": "A simple todo list",
+	"main": "app.js",
+	"scripts": {
+		"start": "node --inspect app.js",
+		"lint": "eslint ."
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"body": "^5.1.0",
+		"eta": "^1.12.3",
+		"mime": "^2.5.2",
+		"url-parse": "^1.5.3"
+	},
+	"devDependencies": {
+		"eslint": "^8.5.0"
+	}
 }
