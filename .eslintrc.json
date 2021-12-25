@@ -26,15 +26,23 @@
 			"always"
 		],
 		"keyword-spacing": "error",
+		"camelcase": "error",
 		"func-call-spacing": [
 			"error",
 			"never"
 		],
 		"no-trailing-spaces": "error",
 		"no-multiple-empty-lines": "error",
+		"no-multi-spaces": "error",
 		"brace-style": [
 			"error",
 			"1tbs"
-		]
+		],
+		"eqeqeq": [
+			"error",
+			"always",
+			{ "null": "ignore" }
+		],
+		"no-var": "error"
 	}
 }
