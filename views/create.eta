@@ -25,3 +25,4 @@
 </form>
 
 <script src="/scripts/scriptCreate.js"></script>
+<script src="/scripts/validation.js"></script>

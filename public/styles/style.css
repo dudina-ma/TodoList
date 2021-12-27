@@ -123,6 +123,10 @@ h1 {
     display: inline-block;
 }
 
+.invisible {
+    display: none;
+}
+
 .create-btn:hover, .back-to-list-btn:hover {
     font-size: 17px;
 }
@@ -314,7 +318,7 @@ h1 {
     color: #358126;
 }
 
-.сategory {
+.category {
     margin-bottom: 10px;
 }
 

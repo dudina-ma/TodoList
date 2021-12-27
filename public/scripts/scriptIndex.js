@@ -28,7 +28,7 @@
 
 		function onConfirmDelete() {
 			fetch('/api/todo/' + todoId + '/delete/', {method: 'POST'})
-				.then(window.location.href = '/');
+				.then(() => window.location.href = '/');
 		}
 	}
 })();

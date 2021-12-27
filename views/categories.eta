@@ -7,7 +7,11 @@
     <button type="button" class="create-btn">Create category</button>
 </div>
 
-<div class="category-create"></div>
+ <form class='category-create-form invisible'>
+    <input type='text' name='title' class='category-create-form-field' autofocus>
+    <input type='submit' value='Add category' class='category-create-form-btn'>
+    <div class='title-validation-error-place'></div>
+</form>
 
 <% const onePageCategoriesAmount = 8; %>
 
@@ -15,11 +19,12 @@
     <% for (let i = 0; i < it.categories.length; i++) { %>
         <% let category = it.categories[i];%>
 
-        <li class="сategory"><%= category.title %></li>
+        <li class="category"><%= category.title %></li>
 
     <% } %>
 </ul>
 
 <script src="/scripts/scriptCategories.js"></script>
+<script src="/scripts/validation.js"></script>
 
 
