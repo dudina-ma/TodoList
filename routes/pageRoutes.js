@@ -42,6 +42,11 @@ const pageRoutes = [
 	{
 		url: '/create/',
 		page: 'create.eta',
+		getData() {
+			return {
+				categories,
+			};
+		}
 	},
 	{
 		url: '/:id/edit/',

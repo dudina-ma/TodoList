@@ -8,7 +8,7 @@
 </div>
 
  <form class='category-create-form invisible'>
-    <input type='text' name='title' class='category-create-form-field' autofocus>
+    <input type='text' name='title' class='category-create-form-field' maxlength="15" autofocus>
     <input type='submit' value='Add category' class='category-create-form-btn'>
     <div class='title-validation-error-place'></div>
 </form>

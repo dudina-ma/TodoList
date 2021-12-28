@@ -19,11 +19,17 @@ const apiRoutes = [
 			checkField(body.title, 'title', 15, validationResult, true);
 			checkField(body.description, 'description', 25, validationResult, false);
 
-			const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
-			todos.push({
-				id: newId,
-				...body
-			});
+			if (Object.keys(validationResult).length === 0) {
+				const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
+				todos.push({
+					id: newId,
+					title: body.title,
+					isDone: body.isDone,
+					category: categories.find(i => i.title === body.category).id,
+					isUrgent: body.isUrgent,
+					description: body.description
+				});
+			}
 
 			return validationResult;
 		}
@@ -65,11 +71,13 @@ const apiRoutes = [
 
 			checkField(body.title, 'title', 15, validationResult, true);
 
-			const newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
-			categories.push({
-				id: newId,
-				...body
-			});
+			if (Object.keys(validationResult).length === 0) {
+				const newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
+				categories.push({
+					id: newId,
+					...body
+				});
+			}
 
 			return validationResult;
 		}

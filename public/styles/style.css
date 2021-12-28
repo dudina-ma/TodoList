@@ -103,6 +103,10 @@ h1 {
     vertical-align: baseline;
 }
 
+.is-urgent {
+	margin-bottom: 10px;
+}
+
 .create-btn {
     width: 140px;
     height: 30px;

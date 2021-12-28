@@ -1,28 +1,40 @@
 <% layout('./layout') %>
 
-<h2 class="todo-create-title">Create new TODO</h2>
+	<h2 class="todo-create-title">Create new TODO</h2>
 
-<form class="create-form">
+	<form class="create-form">
 
-    <div class="create-form-grid">
-        <label for="create-title-id" class="create-label">Title</label>
-        <div>
-            <input type="text" name="title" id="create-title-id" maxlength="25" class="create-input-text">
-            <div class="title-validation-error-place"></div>
-        </div>
+		<div class="create-form-grid">
+			<label for="create-title-id" class="create-label">Title</label>
+			<div>
+				<input type="text" name="title" id="create-title-id" maxlength="15" class="create-input-text">
+				<div class="title-validation-error-place"></div>
+			</div>
 
-        <label for="create-description-id" class="create-label">Description</label>
-        <div>
-            <input type="text" name="description" id="create-description-id" maxlength="35" class="create-input-text">
-            <div class="description-validation-error-place"></div>
-        </div>
+			<label for="create-description-id" class="create-label">Description</label>
+			<div>
+				<input type="text" name="description" id="create-description-id" maxlength="25"
+					class="create-input-text">
+				<div class="description-validation-error-place"></div>
+			</div>
 
-        <label for="create-urgency-id" class="create-label">Urgency</label>
-        <input type="checkbox" name="is-urgent" id="create-urgency-id">
-    </div>
+			<label for="create-category-id" class="create-label">Category</label>
+			<div>
+				<select name="category">
+					<% for (let i=0; i < it.categories.length; i++) { %>
+						<% let category=it.categories[i];%>
+						<option value = "<%= category.title %>"><%= category.title %></option>
+					<% } %>
+				</select>
+				<div class="category-validation-error-place"></div>
+			</div>
 
-    <input type="submit" class="create-btn" value="Create">
-</form>
+			<label for="create-urgency-id" class="create-label">Urgency</label>
+			<input type="checkbox" name="is-urgent" class="is-urgent" id="create-urgency-id">
+		</div>
 
-<script src="/scripts/scriptCreate.js"></script>
-<script src="/scripts/validation.js"></script>
+		<input type="submit" class="create-btn" value="Create">
+	</form>
+
+	<script src="/scripts/scriptCreate.js"></script>
+	<script src="/scripts/validation.js"></script>

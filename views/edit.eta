@@ -7,19 +7,19 @@
     <div class="create-form-grid">
         <label for="create-title-id" class="create-label">Title</label>
         <div>
-            <input type="text" name="title" id="create-title-id" maxlength="25" class="create-input-text"value="<%= it.title %>">
+            <input type="text" name="title" id="create-title-id" maxlength="15" class="create-input-text"value="<%= it.title %>">
             <div class="title-validation-error-place"></div>
         </div>
 
         <label for="create-description-id" class="create-label">Description</label>
         <div>
-            <input type="text" name="description" id="create-description-id" maxlength="40" class="create-input-text" value="<%= it.description %>">
+            <input type="text" name="description" id="create-description-id" maxlength="25" class="create-input-text" value="<%= it.description %>">
             <div class="description-validation-error-place"></div>
         </div>
 
 
         <label for="create-urgency-id" class="create-label">Urgency</label>
-        <input type="checkbox" name="is-urgent" id="create-urgency-id"<%= it.isUrgent ? "checked" : ""%>>
+        <input type="checkbox" name="is-urgent" class="is-urgent" id="create-urgency-id"<%= it.isUrgent ? "checked" : ""%>>
     </div>
 
     <input type="submit" class="create-btn" value="Edit">
