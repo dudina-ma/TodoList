@@ -36,5 +36,5 @@
 		<input type="submit" class="create-btn" value="Create">
 	</form>
 
-	<script src="/scripts/scriptCreate.js"></script>
+	<script src="/scripts/create.js"></script>
 	<script src="/scripts/validation.js"></script>

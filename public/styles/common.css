@@ -1,0 +1,100 @@
+h1 {
+    margin: 10px 0;
+}
+
+p, h2 {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.create-btn {
+    width: 140px;
+    height: 30px;
+}
+
+.create-btn, .back-to-list-btn, .category-create-form-btn {
+    text-decoration: none;
+    display: block;
+    background-color: #093001;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    border: none;
+    font-size: 16px;
+}
+
+.category-create-form-btn {
+    display: inline-block;
+}
+
+.title-create-flexbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-btn:hover, .back-to-list-btn:hover {
+    font-size: 17px;
+}
+
+.create-btn:active, .back-to-list-btn:active {
+    background-color: white;
+    color: #093001;
+}
+
+.create-form-grid {
+    display: grid;
+    grid-template-columns: 80px 310px;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+}
+
+.create-input-text {
+    width: 290px;
+    height: 20px;
+}
+
+.todo-create-title {
+    margin: 15px 15px 15px 0;
+}
+
+.is-urgent {
+	margin-bottom: 10px;
+}
+
+.paging {
+    width: 200px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.page-number {
+    display: inline-block;
+    min-width: 20px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.current-page {
+    background-color: #093001;
+    color: white;
+    width: 30px;
+}
+
+.error {
+    border: none;
+    outline: 1px red solid;
+    color: red;
+}
+
+.error.create-input-text:focus {
+    outline: 1px red solid;
+}
+
+.validation-error {
+    font-size: 14px;
+    color: red;
+    margin-top: 5px;
+}

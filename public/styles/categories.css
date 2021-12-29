@@ -1,0 +1,26 @@
+.category-create-form-field {
+    height: 25px;
+    margin-right: 10px;
+}
+
+.category {
+    margin-bottom: 10px;
+}
+
+.back-to-list-link {
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.back-to-list-link:hover {
+    color: #358126;
+}
+
+.back-to-list-link:visited {
+    color: #093001;
+}
+
+.invisible {
+    display: none;
+}

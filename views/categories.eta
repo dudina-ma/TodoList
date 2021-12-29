@@ -1,5 +1,7 @@
 <% layout('./layout') %>
 
+<link rel="stylesheet" href="/styles/categories.css">
+
 <a href="/" class="back-to-list-link">&lt;&lt; back to the list</a>
 
 <div class="title-create-flexbox">
@@ -24,7 +26,7 @@
     <% } %>
 </ul>
 
-<script src="/scripts/scriptCategories.js"></script>
+<script src="/scripts/categories.js"></script>
 <script src="/scripts/validation.js"></script>
 
 

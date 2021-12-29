@@ -1,0 +1,168 @@
+.todo {
+    width: 400px;
+    height: 80px;
+    border: 1px solid black;
+    margin-bottom: 8px;
+}
+
+.todo-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.todo-is-done {
+    margin: 10px;
+}
+
+.todo-is-done, .todo-title {
+    display: inline-block;
+}
+
+.todo-description {
+    margin: 5px 10px;
+    font-size: 16px;
+}
+
+.done {
+    background-color: #cde9d5;
+    color: dimgray;
+}
+
+.done .todo-title {
+    text-decoration: line-through;
+}
+
+.urgent {
+    height: 20px;
+    width: 20px;
+    vertical-align: baseline;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-controllers {
+    margin-right: 5px;
+}
+
+.delete-btn {
+	background-image: url(/images/delete.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	border: none;
+	width: 20px;
+	height: 20px;
+	background-color: rgba(255, 255, 255, 0);
+	padding: 0;
+}
+
+.delete-btn:hover {
+	transform: scale(1.1);
+}
+
+.delete-btn:active {
+	color: #093001;
+}
+
+.edit-btn-img {
+width: 20px;
+height: 20px;
+}
+
+.edit-link {
+    cursor: default;
+}
+
+.categories-link {
+    text-decoration: none;
+    color: #093001;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.categories-link:hover {
+    color: #358126;
+}
+
+.todo-category {
+    height: 18px;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 10px;
+    border: 1px solid #093001;
+    border-radius: 10px;
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+.search {
+    border: none;
+    vertical-align: middle;
+    height: 23px;
+}
+
+.search:focus {
+    outline: none;
+}
+
+.search-form {
+    border: 1px solid black;
+    height: 25px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.search-flex {
+    display: flex;
+}
+
+.back-to-list-btn {
+    height: 25px;
+    width: 120px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 25px;
+    border: 1px solid #093001;
+}
+
+.back-to-list-btn.categories-page {
+    width: 160px;
+}
+
+.search-submit {
+    background-image: url(/images/search.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    border: none;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0;
+    vertical-align: middle;
+}
+
+.todo-header-left input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+    padding: 0;
+    vertical-align: top;
+    outline: none;
+    transition: background 0.3s ease;
+    border: 1px solid #093001;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.todo-header-left input[type=checkbox]:checked {
+	background-image: url(/images/check.svg);
+    background-size: 15px;
+}

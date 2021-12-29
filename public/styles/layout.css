@@ -1,0 +1,54 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+body, p, h2 {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.layout-positioner {
+    width: 400px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #093001;
+    height: 85px;
+    color: white;
+    flex: 0 0 auto;
+}
+
+footer {
+    background-color: #093001;
+    height: 50px;
+    color: white;
+    flex: 0 0 auto;
+}
+
+.main-content {
+    flex: 1 0 auto;
+}
+
+.footer-flexbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.header-title {
+    font-weight: normal;
+    padding: 10px 0 5px 0;
+}
+
+.header-description {
+    font-size: 12px;
+    padding-bottom: 5px 0 10px 0;
+}
