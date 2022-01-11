@@ -16,7 +16,7 @@ const pageRoutes = [
 					|| item.description.toLowerCase().includes(searchStringLowerCase));
 			}
 
-			results = todos.map(item => ({
+			results = results.map(item => ({
 				id: item.id,
 				title: item.title,
 				isDone: item.isDone,
