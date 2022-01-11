@@ -4,7 +4,7 @@
 
     <% if (lastPageNumber > 1) { %>
         <% if (it.currentPage >= 3) { %>
-            <a href="?page=<%= 1%>" class="page-number">1</a>
+            <a href="?page=1" class="page-number">1</a>
         <% } %>
         <% if (it.currentPage >= 4) { %>
             <span class="page-number">…</span>

@@ -6,7 +6,7 @@ const pageRoutes = [
 		url: '/',
 		page: 'index.eta',
 		getData(params, queryParams) {
-			let currentPage = queryParams.page ?? 1;
+			let currentPage = Number(queryParams.page ?? 1);
 
 			let results = todos;
 
@@ -15,6 +15,8 @@ const pageRoutes = [
 				results = todos.filter(item => item.title.toLowerCase().includes(searchStringLowerCase)
 					|| item.description.toLowerCase().includes(searchStringLowerCase));
 			}
+
+			// todo: здесь оставить только тудухи для текущей страницы
 
 			results = results.map(item => ({
 				id: item.id,

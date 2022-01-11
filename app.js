@@ -37,7 +37,7 @@ const server = http.createServer((request, response) => {
 		eta.renderFile(filePath, data, (error, html) => {
 			// TODO: решать, какой надо код ошибки по error
 			if (error) {
-				sendError(response, 500);
+				sendError(response, 500, url, error);
 				return;
 			}
 
@@ -50,7 +50,7 @@ const server = http.createServer((request, response) => {
 	}
 
 	if (url.pathname.includes('..')) {
-		sendError(response, 400);
+		sendError(response, 400, url);
 		return;
 	}
 
@@ -58,7 +58,7 @@ const server = http.createServer((request, response) => {
 
 	fs.readFile(filePath, (error, file) => {
 		if (error) {
-			sendError(response, 404);
+			sendError(response, 404, url);
 			return;
 		}
 
@@ -80,8 +80,14 @@ server.listen(3000, error => {
 	console.log('Server is running');
 });
 
-function sendError(response, code, url) {
+process.on('uncaughtException', err => console.error('Unhandled exception: ', err));
+
+function sendError(response, code, url, error) {
 	console.log(`Error ${code}, url: ${url}`);
+	if (error) {
+		console.error(error);
+	}
+
 	response.statusCode = code;
 	response.end(code + '');
 }
