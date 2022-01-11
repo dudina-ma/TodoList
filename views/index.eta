@@ -19,10 +19,8 @@
     <a href="/" class="back-to-list-btn">Back to the list</a>
 </div>
 
-<% const onePageTodosAmount = 5; %>
-
-<% for (let i = onePageTodosAmount * (it.currentPage - 1); i <= Math.min(onePageTodosAmount * it.currentPage - 1, it.todos.length - 1); i++) { %>
-    <% let todo = it.todos[i];%>
+<% for (let i = 0; i < it.todosOnPage.length; i++) { %>
+    <% let todo = it.todosOnPage[i];%>
 
     <div class="todo <%= todo.isDone ? "done" : ""%>" data-todo-id="<%= todo.id %>">
 
@@ -51,4 +49,4 @@
 <% } %>
 <script src="/scripts/index.js"></script>
 
-<%~ includeFile('./paging.eta', {onePageTodosAmount, todos: it.todos, currentPage: it.currentPage}) %>
+<%~ includeFile('./paging.eta', {onePageTodosAmount: it.onePageTodosAmount, todos: it.todosAll, currentPage: it.currentPage}) %>

@@ -6,6 +6,7 @@ const pageRoutes = [
 		url: '/',
 		page: 'index.eta',
 		getData(params, queryParams) {
+			const onePageTodosAmount = 5;
 			let currentPage = Number(queryParams.page ?? 1);
 
 			let results = todos;
@@ -16,7 +17,7 @@ const pageRoutes = [
 					|| item.description.toLowerCase().includes(searchStringLowerCase));
 			}
 
-			// todo: здесь оставить только тудухи для текущей страницы
+			results = results.slice(onePageTodosAmount * (currentPage - 1), onePageTodosAmount * currentPage);
 
 			results = results.map(item => ({
 				id: item.id,
@@ -28,9 +29,11 @@ const pageRoutes = [
 			}));
 
 			return {
-				todos: results,
+				todosAll: todos,
+				todosOnPage: results,
 				currentPage,
 				searchString: queryParams.search,
+				onePageTodosAmount,
 			};
 		}
 	},
