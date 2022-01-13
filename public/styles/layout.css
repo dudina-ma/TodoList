@@ -25,6 +25,15 @@ header {
     flex: 0 0 auto;
 }
 
+.header-logo-title {
+	display: flex;
+}
+
+.logo {
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
 footer {
     background-color: #093001;
     height: 50px;

@@ -9,7 +9,10 @@
 	<body>
 		<header>
 			<div class="layout-positioner">
-				<h2 class="header-title">Welcome to your todo list!</h2>
+				<div class="header-logo-title">
+					<a href="/" class="logo"><img src="/images/to-do-list.png" width="30px"></a>
+					<h2 class="header-title">Welcome to your todo list!</h2>
+				</div>
 				<p class="header-description">What is a ToDo List? The definition is a simple one. It’s a list of tasks you need to complete, or things that you want to do.</p>
 			</div>
 		</header>
