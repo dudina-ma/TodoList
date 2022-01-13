@@ -13,8 +13,12 @@ const pageRoutes = [
 
 			if (queryParams.search) {
 				const searchStringLowerCase = queryParams.search.toLowerCase();
-				results = todos.filter(item => item.title.toLowerCase().includes(searchStringLowerCase)
+				results = results.filter(item => item.title.toLowerCase().includes(searchStringLowerCase)
 					|| item.description.toLowerCase().includes(searchStringLowerCase));
+			}
+
+			if (queryParams.category) {
+				results = results.filter(item => categories.find(i => i.id === item.category).title === queryParams.category);
 			}
 
 			const { sortTodos } = require('../helpers/todosSorting');

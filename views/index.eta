@@ -49,7 +49,7 @@
 
 		<p class="todo-creation-date"><%= todo.creationDate.toLocaleDateString() %> <%= todo.creationDate.toLocaleTimeString() %></p>
 
-        <p class="todo-category"><%= todo.category %></p>
+        <a href="/?category=<%= todo.category %>" class="todo-category"><%= todo.category %></a>
     </div>
 
 <% } %>
