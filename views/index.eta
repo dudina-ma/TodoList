@@ -19,6 +19,10 @@
     <a href="/" class="back-to-list-btn">Back to the list</a>
 </div>
 
+<p class="sorting">Sort:</p>
+<a class="sorting-options" href="/?sort=date">Oldest to newest</a>
+<a class="sorting-options" href="/?sort=-date">Newest to oldest</a>
+
 <% for (let i = 0; i < it.todosOnPage.length; i++) { %>
     <% let todo = it.todosOnPage[i];%>
 
@@ -42,6 +46,8 @@
         </div>
 
         <p class="todo-description"><%= todo.description %></p>
+
+		<p class="todo-creation-date"><%= todo.creationDate.toLocaleDateString() %> <%= todo.creationDate.toLocaleTimeString() %></p>
 
         <p class="todo-category"><%= todo.category %></p>
     </div>

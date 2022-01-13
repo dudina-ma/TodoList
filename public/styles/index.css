@@ -1,6 +1,6 @@
 .todo {
     width: 400px;
-    height: 80px;
+    height: 100px;
     border: 1px solid black;
     margin-bottom: 8px;
 }
@@ -21,6 +21,12 @@
 .todo-description {
     margin: 5px 10px;
     font-size: 16px;
+}
+
+.todo-creation-date {
+	margin-left: 10px;
+	font-size: 14px;
+	margin-bottom: 3px;
 }
 
 .done {
@@ -113,7 +119,7 @@ height: 20px;
     border: 1px solid black;
     height: 25px;
     margin-right: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .search-flex {
@@ -165,4 +171,17 @@ height: 20px;
 .todo-header-left input[type=checkbox]:checked {
 	background-image: url(/images/check.svg);
     background-size: 15px;
+}
+
+.sorting {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.sorting-options {
+	text-decoration: underline;
+}
+
+.sorting-options:visited {
+	color: black;
 }

@@ -6,7 +6,7 @@ const pageRoutes = [
 		url: '/',
 		page: 'index.eta',
 		getData(params, queryParams) {
-			const onePageTodosAmount = 5;
+			const onePageTodosAmount = 4;
 			let currentPage = Number(queryParams.page ?? 1);
 
 			let results = todos;
@@ -17,6 +17,18 @@ const pageRoutes = [
 					|| item.description.toLowerCase().includes(searchStringLowerCase));
 			}
 
+			const { sortTodos } = require('../helpers/todosSorting');
+
+			if (queryParams.sort) {
+				if (queryParams.sort === 'date') {
+					sortTodos(results, false);
+				} else {
+					sortTodos(results, true);
+				}
+			} else {
+				sortTodos(results, true);
+			}
+
 			results = results.slice(onePageTodosAmount * (currentPage - 1), onePageTodosAmount * currentPage);
 
 			results = results.map(item => ({
@@ -25,7 +37,8 @@ const pageRoutes = [
 				isDone: item.isDone,
 				category: categories.find(i => i.id === item.category).title,
 				isUrgent: item.isUrgent,
-				description: item.description
+				description: item.description,
+				creationDate: item.creationDate,
 			}));
 
 			return {
