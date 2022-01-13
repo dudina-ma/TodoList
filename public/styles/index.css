@@ -187,3 +187,8 @@ height: 20px;
 .sorting-options:visited {
 	color: black;
 }
+
+.sorting-options.chosen {
+	font-weight: bold;
+	color: #093001;
+}

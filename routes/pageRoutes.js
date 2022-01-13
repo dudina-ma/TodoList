@@ -51,6 +51,7 @@ const pageRoutes = [
 				currentPage,
 				searchString: queryParams.search,
 				onePageTodosAmount,
+				sort: queryParams.sort,
 			};
 		}
 	},

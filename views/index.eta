@@ -20,8 +20,9 @@
 </div>
 
 <p class="sorting">Sort:</p>
-<a class="sorting-options" href="/?sort=date">Oldest to newest</a>
-<a class="sorting-options" href="/?sort=-date">Newest to oldest</a>
+<a class="sorting-options oldest-to-newest <%= it.sort === "date" ? "chosen" : ""%>" href="/?sort=date">Oldest to newest</a>
+<span> | </span>
+<a class="sorting-options newest-to-oldest <%= (it.sort === "-date" || it.sort === undefined) ? "chosen" : ""%>" href="/?sort=-date">Newest to oldest</a>
 
 <% for (let i = 0; i < it.todosOnPage.length; i++) { %>
     <% let todo = it.todosOnPage[i];%>

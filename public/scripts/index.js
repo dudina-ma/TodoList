@@ -1,5 +1,5 @@
-// check
 (function() {
+	// check
 	const todos = document.querySelectorAll('.todo');
 
 	for (let todo of todos) {
