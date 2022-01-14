@@ -33,9 +33,9 @@ const pageRoutes = [
 				sortTodos(results, true);
 			}
 
-			results = results.slice(onePageTodosAmount * (currentPage - 1), onePageTodosAmount * currentPage);
+			let todosOnPage = results.slice(onePageTodosAmount * (currentPage - 1), onePageTodosAmount * currentPage);
 
-			results = results.map(item => ({
+			todosOnPage = todosOnPage.map(item => ({
 				id: item.id,
 				title: item.title,
 				isDone: item.isDone,
@@ -46,8 +46,8 @@ const pageRoutes = [
 			}));
 
 			return {
-				todosAll: todos,
-				todosOnPage: results,
+				results,
+				todosOnPage,
 				currentPage,
 				searchString: queryParams.search,
 				onePageTodosAmount,

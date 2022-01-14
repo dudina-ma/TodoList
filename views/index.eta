@@ -56,4 +56,4 @@
 <% } %>
 <script src="/scripts/index.js"></script>
 
-<%~ includeFile('./paging.eta', {onePageTodosAmount: it.onePageTodosAmount, todos: it.todosAll, currentPage: it.currentPage}) %>
+<%~ includeFile('./paging.eta', {onePageTodosAmount: it.onePageTodosAmount, todos: it.results, currentPage: it.currentPage}) %>
