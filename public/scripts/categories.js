@@ -33,8 +33,8 @@ function handlerCreate(event) {
 		},
 	}).then(response => response.json()
 	).then(result => {
-		if (Object.keys(result).length !== 0) {
-			window.addValidationErrors(result);
+		if (result.validationResult) {
+			window.addValidationErrors(result.validationResult);
 		} else {
 			categoryCreateFormOnPage.classList.add('invisible');
 			const categoriesList = document.querySelector('.categories-list');
@@ -47,6 +47,22 @@ function handlerCreate(event) {
 			newCategoryToPage.textContent = newCategory.title;
 			newCategoryToPageContainer.append(newCategoryToPage);
 			categoryCreateFormField.value = '';
+
+			const categoryControllers = document.createElement('div');
+			categoryControllers.classList.add('category-controllers');
+			newCategoryToPageContainer.append(categoryControllers);
+
+			const editBtn = document.createElement('button');
+			editBtn.classList.add('edit-btn');
+			editBtn.type = 'button';
+			editBtn.dataset.categoryId = result.newId;
+			categoryControllers.append(editBtn);
+
+			const deleteBtn = document.createElement('button');
+			deleteBtn.classList.add('delete-btn');
+			deleteBtn.type = 'button';
+			deleteBtn.dataset.categoryId = result.newId;
+			categoryControllers.append(deleteBtn);
 		}
 	});
 }
@@ -58,3 +74,21 @@ function clearValidationErrorsOnInput(form) {
 }
 
 clearValidationErrorsOnInput(categoryCreateFormOnPage);
+
+// delete
+const deleteBtns = document.querySelectorAll('.delete-btn');
+
+for (let deleteBtn of deleteBtns) {
+	deleteBtn.addEventListener('click', handlerDelete);
+}
+
+function handlerDelete(event) {
+	const categoryId = event.currentTarget.dataset.categoryId;
+
+	window.Modal.showConfirm('Delete category', 'Do you really want to delete category?', onConfirmDelete);
+
+	function onConfirmDelete() {
+		fetch('/api/categories/' + categoryId + '/delete/', {method: 'POST'})
+			.then(() => window.location.href = '/categories/');
+	}
+}

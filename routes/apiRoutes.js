@@ -72,15 +72,27 @@ const apiRoutes = [
 
 			checkField(body.title, 'title', 15, validationResult, true);
 
+			let newId;
+
 			if (Object.keys(validationResult).length === 0) {
-				const newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
+				newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
 				categories.push({
 					id: newId,
 					...body
 				});
+				return { newId };
 			}
 
-			return validationResult;
+			return { validationResult };
+		}
+	},
+	{
+		url: '/api/categories/:id/delete/',
+		method: 'POST',
+		action(params) {
+			const categoryId = Number(params.id);
+			let categoryIdToDelete = categories.findIndex(item => item.id === categoryId);
+			categories.splice(categoryIdToDelete, 1);
 		}
 	},
 ];
