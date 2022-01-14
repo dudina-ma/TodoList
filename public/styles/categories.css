@@ -3,8 +3,22 @@
     margin-right: 10px;
 }
 
+.categories-list {
+	list-style-type: none;
+	padding-inline-start: 10px;
+}
+
 .category {
     margin-bottom: 10px;
+	display: inline-block;
+	height: 18px;
+    font-size: 14px;
+    border: 1px solid #093001;
+    border-radius: 10px;
+    padding: 0 5px;
+    font-weight: bold;
+	text-decoration: none;
+	color: black;
 }
 
 .back-to-list-link {

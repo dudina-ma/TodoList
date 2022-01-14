@@ -21,7 +21,9 @@
     <% for (let i = 0; i < it.categories.length; i++) { %>
         <% let category = it.categories[i];%>
 
-        <li class="category"><%= category.title %></li>
+		<div class="category-container">
+			<li class="category"><%= category.title %></li>
+		</div>
 
     <% } %>
 </ul>

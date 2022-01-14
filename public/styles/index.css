@@ -8,14 +8,7 @@
 .todo-title {
     font-size: 20px;
     font-weight: 700;
-}
-
-.todo-is-done {
-    margin: 10px;
-}
-
-.todo-is-done, .todo-title {
-    display: inline-block;
+	display: inline-block;
 }
 
 .todo-description {
@@ -161,6 +154,7 @@ height: 20px;
     width: 15px;
     height: 15px;
     margin: 5px;
+	margin-left: 10px;
     padding: 0;
     vertical-align: top;
     outline: none;

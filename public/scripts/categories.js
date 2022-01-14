@@ -38,10 +38,14 @@ function handlerCreate(event) {
 		} else {
 			categoryCreateFormOnPage.classList.add('invisible');
 			const categoriesList = document.querySelector('.categories-list');
+			const newCategoryToPageContainer = document.createElement('div');
+			newCategoryToPageContainer.classList.add('category-container');
+			categoriesList.append(newCategoryToPageContainer);
+
 			const newCategoryToPage = document.createElement('li');
 			newCategoryToPage.classList.add('category');
 			newCategoryToPage.textContent = newCategory.title;
-			categoriesList.append(newCategoryToPage);
+			newCategoryToPageContainer.append(newCategoryToPage);
 			categoryCreateFormField.value = '';
 		}
 	});
