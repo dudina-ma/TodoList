@@ -89,6 +89,16 @@ function handlerDelete(event) {
 
 	function onConfirmDelete() {
 		fetch('/api/categories/' + categoryId + '/delete/', {method: 'POST'})
-			.then(() => window.location.href = '/categories/');
+			.then(response => response.json()
+			).then(result => {
+				if (!result.isDeleted) {
+					window.Modal.showAlert('Delete category', 'This category is being used. You should delete all todos with this category first.', onAlertDelete);
+				} else {
+					window.location.href = '/categories/';
+				}
+				function onAlertDelete() {
+					window.location.href = '/categories/';
+				}
+			});
 	}
 }
