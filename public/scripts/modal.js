@@ -55,7 +55,9 @@
 		const yes = document.querySelector('.modal-yes');
 		if (yes) {
 			yes.addEventListener('click', () => {
-				onConfirm();
+				if (onConfirm != null) {
+					onConfirm();
+				}
 				removeOverlayAndModal();
 			});
 		}

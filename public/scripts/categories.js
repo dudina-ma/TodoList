@@ -92,11 +92,9 @@ function handlerDelete(event) {
 			.then(response => response.json()
 			).then(result => {
 				if (!result.isDeleted) {
-					window.Modal.showAlert('Delete category', 'This category is being used. You should delete all todos with this category first.', onAlertDelete);
+					window.Modal.showAlert('Delete category',
+						'This category is being used. You should delete all todos with this category first.');
 				} else {
-					window.location.href = '/categories/';
-				}
-				function onAlertDelete() {
 					window.location.href = '/categories/';
 				}
 			});
