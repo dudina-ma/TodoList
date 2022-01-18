@@ -58,10 +58,28 @@ const apiRoutes = [
 		method: 'POST',
 		action(params, __, body) {
 			const idNumber = Number(params.id);
-			let todoIdToEdit = todos.findIndex(item => item.id === idNumber);
-			todos[todoIdToEdit].title = body.title;
-			todos[todoIdToEdit].description = body.description;
-			todos[todoIdToEdit].isUrgent = body.isUrgent;
+			let todoToEdit = todos.findIndex(item => item.id === idNumber);
+			todos[todoToEdit].title = body.title;
+			todos[todoToEdit].description = body.description;
+			todos[todoToEdit].isUrgent = body.isUrgent;
+		}
+	},
+	{
+		url: '/api/category/:id/edit/',
+		method: 'POST',
+		action(params, __, body) {
+			const validationResult = {};
+
+			checkField(body.title, 'title', 15, validationResult, true);
+
+			const idNumber = Number(params.id);
+
+			if (Object.keys(validationResult).length === 0) {
+				let categoryToEdit = categories.findIndex(item => item.id === idNumber);
+				categories[categoryToEdit].title = body.title;
+			}
+
+			return { validationResult };
 		}
 	},
 	{

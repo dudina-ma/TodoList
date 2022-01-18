@@ -12,7 +12,7 @@ p, h2 {
     height: 30px;
 }
 
-.create-btn, .back-to-list-btn, .category-create-form-btn {
+.create-btn, .back-to-list-btn, .category-create-form-btn, .category-edit-form-btn {
     text-decoration: none;
     display: block;
     background-color: #093001;
@@ -23,7 +23,7 @@ p, h2 {
     font-size: 16px;
 }
 
-.category-create-form-btn {
+.category-create-form-btn, .category-edit-form-btn {
     display: inline-block;
 }
 

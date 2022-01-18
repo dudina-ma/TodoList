@@ -10,7 +10,7 @@
 </div>
 
  <form class='category-create-form invisible'>
-    <input type='text' name='title' class='category-create-form-field' maxlength="15" autofocus>
+    <input type='text' name='title' class='category-create-form-field' maxlength="15">
     <input type='submit' value='Add category' class='category-create-form-btn'>
     <div class='title-validation-error-place'></div>
 </form>
@@ -21,12 +21,19 @@
     <% for (let i = 0; i < it.categories.length; i++) { %>
         <% let category = it.categories[i];%>
 
-		<div class="category-container" data-category-id="<%= category.id %>">
-			<li class="category-container-item category"><%= category.title %></li>
-			<div class="category-container-item category-controllers">
-                <button type="button" class="edit-btn" data-category-id="<%= category.id %>"></button>
-				<button type="button" class="delete-btn" data-category-id="<%= category.id %>"></button>
-            </div>
+		<div class="category-container">
+			<div class='category' data-category-id="<%= category.id %>">
+				<li class="category-title"><%= category.title %></li>
+				<div class="category-controllers">
+					<button type="button" class="edit-btn" data-category-id="<%= category.id %>"></button>
+					<button type="button" class="delete-btn" data-category-id="<%= category.id %>"></button>
+				</div>
+			</div>
+			<form class='category-edit-form invisible' data-category-id="<%= category.id %>">
+				<input type='text' name='title' class='category-edit-form-field' maxlength="15" value=<%= category.title %>>
+				<input type='submit' value='Edit category' class='category-edit-form-btn'>
+				<div class='title-validation-error-place'></div>
+			</form>
 		</div>
 
     <% } %>
