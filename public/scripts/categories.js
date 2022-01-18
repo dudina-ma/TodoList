@@ -42,7 +42,7 @@ function handlerCreate(event) {
 
 		const categoriesList = document.querySelector('.categories-list');
 
-		const categoryHtml = `<div class="category-container">
+		const categoryHtml = `<div class="category-container" data-category-id="${result.newId}">
 			<div class='category' data-category-id="${result.newId}">
 				<li class="category-title">${newCategory.title}</li>
 				<div class="category-controllers">
@@ -89,7 +89,8 @@ function handlerDelete(event) {
 					window.Modal.showAlert('Delete category',
 						'This category is being used. You should delete all todos with this category first.');
 				} else {
-					window.location.href = '/categories/';
+					const categoryToDelete = document.querySelector('.category-container[data-category-id="' + categoryId + '"]');
+					categoryToDelete.remove();
 				}
 			});
 	}
