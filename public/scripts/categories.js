@@ -69,16 +69,25 @@ function clearValidationErrorsOnInput(form) {
 
 clearValidationErrorsOnInput(categoryCreateFormOnPage);
 
-// delete
-const deleteBtns = document.querySelectorAll('.delete-btn');
+const categoryList = document.querySelector('.categories-list');
+categoryList.addEventListener('click', handlerAddHandlers);
 
-for (let deleteBtn of deleteBtns) {
-	deleteBtn.addEventListener('click', handlerDelete);
+function handlerAddHandlers(event) {
+	let target = event.target;
+	const categoryId = event.target.dataset.categoryId;
+
+	if (target.classList.contains('delete-btn')) {
+		handlerDelete(categoryId);
+	}
+
+	if (target.classList.contains('edit-btn')) {
+		handlerEdit(categoryId);
+	}
 }
 
-function handlerDelete(event) {
-	const categoryId = event.currentTarget.dataset.categoryId;
 
+// delete
+function handlerDelete(categoryId) {
 	window.Modal.showConfirm('Delete category', 'Do you really want to delete category?', onConfirmDelete);
 
 	function onConfirmDelete() {
@@ -97,14 +106,7 @@ function handlerDelete(event) {
 }
 
 // edit
-const editBtns = document.querySelectorAll('.edit-btn');
-
-for (let editBtn of editBtns) {
-	editBtn.addEventListener('click', handlerEdit);
-}
-
-function handlerEdit(event) {
-	const categoryId = event.currentTarget.dataset.categoryId;
+function handlerEdit(categoryId) {
 	const category = document.querySelector('.category[data-category-id="' + categoryId + '"]');
 	category.classList.add('invisible');
 
@@ -119,9 +121,9 @@ function handlerEdit(event) {
 	categoryEditFormField.value = '';
 	categoryEditFormField.value = fieldValue;
 
-	categoryEditForm.addEventListener('submit', handlerEdit);
+	categoryEditForm.addEventListener('submit', save);
 
-	function handlerEdit(event) {
+	function save(event) {
 		event.preventDefault();
 
 		let formData = new FormData(event.target);
