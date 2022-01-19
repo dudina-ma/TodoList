@@ -18,7 +18,7 @@ const pageRoutes = [
 			}
 
 			if (queryParams.category) {
-				results = results.filter(item => categories.find(i => i.id === item.category).title === queryParams.category);
+				results = results.filter(result => result.categoryIds.includes(categories.find(i => i.title === queryParams.category).id));
 			}
 
 			const { sortTodos } = require('../helpers/todosSorting');
