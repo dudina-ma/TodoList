@@ -35,6 +35,11 @@
 	font-size: 0;
 }
 
+.create-btn {
+    width: 50px;
+    height: 30px;
+}
+
 .back-to-list-link {
     text-decoration: none;
     display: inline-block;

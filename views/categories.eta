@@ -6,7 +6,7 @@
 
 <div class="title-create-flexbox">
     <h1>Categories</h1>
-    <button type="button" class="create-btn">Create category</button>
+    <button type="button" class="create-btn">Add</button>
 </div>
 
  <form class='category-create-form invisible'>

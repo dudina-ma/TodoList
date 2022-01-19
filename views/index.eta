@@ -7,7 +7,10 @@
 
 <div class="title-create-flexbox">
     <h1>My TODO list</h1>
-    <a href="/create/" class="create-btn">Create TODO</a>
+	<div class="todos-list-controllers">
+		<a href="/create/" class="create-btn">Add</a>
+		<button class="delete-done-todos">Delete done</button>
+	</div>
 </div>
 
 <div class="search-flex">

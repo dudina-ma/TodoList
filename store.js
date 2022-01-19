@@ -46,7 +46,7 @@
 {
 	id: 6,
 	title: 'Return the book to Tom',
-	isDone: false,
+	isDone: true,
 	category: 4,
 	isUrgent: true,
 	description: 'Twilight',
@@ -64,7 +64,7 @@
 {
 	id: 8,
 	title: 'Watch the film',
-	isDone: false,
+	isDone: true,
 	category: 4,
 	isUrgent: false,
 	description: 'Nobody',

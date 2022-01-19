@@ -31,4 +31,14 @@
 				.then(() => window.location.href = '/');
 		}
 	}
+
+	// delete all done todos
+	const deleteDoneTodosBtn = document.querySelector('.delete-done-todos');
+	deleteDoneTodosBtn.addEventListener('click', deleteDoneTodos);
+
+	function deleteDoneTodos() {
+		fetch('/api/todo/deleteDone/', {method: 'POST'})
+			.then(() => window.location.href = '/');
+	}
+
 })();

@@ -38,6 +38,8 @@ function handlerCreate(event) {
 			return;
 		}
 
+		categoryCreateFormField.value = '';
+
 		categoryCreateFormOnPage.classList.add('invisible');
 
 		const categoriesList = document.querySelector('.categories-list');
@@ -51,7 +53,7 @@ function handlerCreate(event) {
 				</div>
 			</div>
 			<form class='category-edit-form invisible' data-category-id="${result.newId}">
-				<input type='text' name='title' class='category-edit-form-field' maxlength="15" value=${newCategory.title}>>
+				<input type='text' name='title' class='category-edit-form-field' maxlength="15" value=${newCategory.title}>
 				<input type='submit' value='Edit category' class='category-edit-form-btn'>
 				<div class='title-validation-error-place'></div>
 			</form>
@@ -91,7 +93,7 @@ function handlerDelete(categoryId) {
 	window.Modal.showConfirm('Delete category', 'Do you really want to delete category?', onConfirmDelete);
 
 	function onConfirmDelete() {
-		fetch('/api/categories/' + categoryId + '/delete/', {method: 'POST'})
+		fetch('/api/category/' + categoryId + '/delete/', {method: 'POST'})
 			.then(response => response.json()
 			).then(result => {
 				if (!result.isDeleted) {

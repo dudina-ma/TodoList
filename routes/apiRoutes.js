@@ -4,13 +4,6 @@ const { categories } = require('../store');
 
 const apiRoutes = [
 	{
-		url: '/api/all/',
-		method: 'GET',
-		action() {
-			return [...todos];
-		}
-	},
-	{
 		url: '/api/todo/create/',
 		method: 'POST',
 		action(_, __, body) {
@@ -65,6 +58,18 @@ const apiRoutes = [
 		}
 	},
 	{
+		url: '/api/todo/deleteDone/',
+		method: 'POST',
+		action() {
+			for (let i = 0; i < todos.length; i++) {
+				if (todos[i].isDone === true) {
+					todos.splice(i, 1);
+					i--;
+				}
+			}
+		}
+	},
+	{
 		url: '/api/category/:id/edit/',
 		method: 'POST',
 		action(params, __, body) {
@@ -105,7 +110,7 @@ const apiRoutes = [
 		}
 	},
 	{
-		url: '/api/categories/:id/delete/',
+		url: '/api/category/:id/delete/',
 		method: 'POST',
 		action(params) {
 			const categoryId = Number(params.id);

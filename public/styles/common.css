@@ -1,5 +1,6 @@
 h1 {
     margin: 10px 0;
+	font-size: 32px;
 }
 
 p, h2 {
@@ -12,7 +13,7 @@ p, h2 {
     height: 30px;
 }
 
-.create-btn, .back-to-list-btn, .category-create-form-btn, .category-edit-form-btn {
+.create-btn, .back-to-list-btn, .category-create-form-btn, .category-edit-form-btn, .delete-done-todos {
     text-decoration: none;
     display: block;
     background-color: #093001;
@@ -33,11 +34,12 @@ p, h2 {
     align-items: center;
 }
 
-.create-btn:hover, .back-to-list-btn:hover {
+.create-btn:hover, .back-to-list-btn:hover, .delete-done-todos:hover {
     font-size: 17px;
+	cursor: pointer;
 }
 
-.create-btn:active, .back-to-list-btn:active {
+.create-btn:active, .back-to-list-btn:active, .delete-done-todos:active {
     background-color: white;
     color: #093001;
 }

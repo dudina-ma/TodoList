@@ -47,6 +47,21 @@
     margin-right: 5px;
 }
 
+.create-btn {
+    width: 50px;
+    height: 30px;
+}
+
+.todos-list-controllers {
+	display: flex;
+}
+
+.delete-done-todos {
+	height: 30px;
+	margin-left: 5px;
+	width: 105px;
+}
+
 .delete-btn {
 	background-image: url(/images/delete.svg);
 	background-position: center;
