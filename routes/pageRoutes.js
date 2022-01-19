@@ -39,7 +39,7 @@ const pageRoutes = [
 				id: item.id,
 				title: item.title,
 				isDone: item.isDone,
-				category: categories.find(i => i.id === item.category).title,
+				categoriesTitles: item.categoryIds.map(id => categories.find(c => c.id === id).title),
 				isUrgent: item.isUrgent,
 				description: item.description,
 				creationDate: item.creationDate,
