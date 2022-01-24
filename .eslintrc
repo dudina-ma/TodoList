@@ -43,6 +43,7 @@
 			"always",
 			{ "null": "ignore" }
 		],
-		"no-var": "error"
+		"no-var": "error",
+		"ignorePatterns": ["public/scripts/lib/**.js"]
 	}
 }

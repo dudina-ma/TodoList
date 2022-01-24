@@ -1,5 +1,9 @@
 // submit createForm
 
+let multiSelectLib = new SlimSelect({
+	select: '.category-select'
+});
+
 const createForm = document.querySelector('.create-form');
 
 function clearValidationErrorsOnInput(form) {
@@ -15,10 +19,14 @@ createForm.addEventListener('submit', handlerCreate);
 function handlerCreate(event) {
 	event.preventDefault();
 
-	let formData = new FormData(event.target);
+	/*let formData = new FormData(event.target);
 
 	let newTodo = {};
-	formData.forEach((value, key) => newTodo[key] = value);
+	formData.forEach((value, key) => newTodo[key] = value);*/
+
+	let newTodo = window.createObjectFromFormFields(createForm);
+
+	console.log(newTodo);
 
 	window.clearValidationErrors();
 

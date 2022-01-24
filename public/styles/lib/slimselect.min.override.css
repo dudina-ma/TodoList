@@ -1,0 +1,19 @@
+.ss-main .ss-multi-selected .ss-values .ss-value, .ss-content .ss-list .ss-optgroup-label-selectable:hover, .ss-content .ss-list .ss-option.ss-highlighted, .ss-content .ss-list .ss-option:hover {
+	background-color: #093001;
+}
+
+.ss-content .ss-search input:focus {
+	box-shadow: 0 0 5px #093001;
+}
+
+.category-select {
+	width: 298px;
+}
+
+.ss-main .ss-single-selected, .ss-main .ss-multi-selected, .ss-content, .ss-content .ss-search input, .ss-content .ss-search .ss-addable {
+	border: 1px solid rgb(118, 118, 118);
+}
+
+.ss-main .ss-single-selected .placeholder .ss-disabled, .ss-main .ss-multi-selected .ss-values .ss-disabled {
+	color: rgb(118, 118, 118);
+}

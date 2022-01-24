@@ -2,7 +2,7 @@
 	id: 1,
 	title: 'Shop',
 	isDone: false,
-	categoryIds: [1],
+	categoryIds: [1, 2],
 	isUrgent: false,
 	description: 'To buy eggs',
 	creationDate: new Date(2022, 0, 10, 9, 3, 45),
