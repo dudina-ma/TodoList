@@ -16,4 +16,4 @@ window.createObjectFromFormFields = function(form) {
 	result[select.name] = selectedOpts;
 
 	return result;
-}
+};

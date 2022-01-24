@@ -1,6 +1,5 @@
 // submit createForm
-
-let multiSelectLib = new SlimSelect({
+new window.SlimSelect({
 	select: '.category-select'
 });
 
