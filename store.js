@@ -96,6 +96,10 @@ const categories = [{
 	id: 6,
 	title: 'work',
 },
+{
+	id: 7,
+	title: 'hospital',
+},
 ];
 
 module.exports = { todos, categories };

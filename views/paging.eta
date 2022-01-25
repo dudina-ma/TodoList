@@ -1,6 +1,6 @@
 <div class="paging">
 
-    <% const lastPageNumber = Math.ceil(it.todos.length/it.onePageTodosAmount); %>
+    <% const lastPageNumber = Math.ceil(it.array.length/it.onePageItemsAmount); %>
 
     <% if (lastPageNumber > 1) { %>
         <% if (it.currentPage >= 3) { %>

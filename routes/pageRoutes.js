@@ -82,20 +82,18 @@ const pageRoutes = [
 		url: '/categories/',
 		page: 'categories.eta',
 		getData(params, queryParams) {
-			let currentPage = queryParams.page ?? 1;
+			const onePageCategoriesAmount = 6;
+			let currentPage = Number(queryParams.page ?? 1);
 
 			let results = categories;
 
-			if (queryParams.search) {
-				const searchStringLowerCase = queryParams.search.toLowerCase();
-				results = todos.filter(item => item.title.toLowerCase().includes(searchStringLowerCase)
-					|| item.description.toLowerCase().includes(searchStringLowerCase));
-			}
+			let categoriesOnPage = results.slice(onePageCategoriesAmount * (currentPage - 1), onePageCategoriesAmount * currentPage);
 
 			return {
 				categories: results,
+				categoriesOnPage,
 				currentPage,
-				searchString: queryParams.search,
+				onePageCategoriesAmount
 			};
 		}
 	}

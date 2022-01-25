@@ -18,8 +18,8 @@
 <% const onePageCategoriesAmount = 8; %>
 
 <ul class="categories-list">
-    <% for (let i = 0; i < it.categories.length; i++) { %>
-        <% let category = it.categories[i];%>
+    <% for (let i = 0; i < it.categoriesOnPage.length; i++) { %>
+        <% let category = it.categoriesOnPage[i];%>
 
 		<div class="category-container" data-category-id="<%= category.id %>">
 			<div class='category' data-category-id="<%= category.id %>">
@@ -38,6 +38,8 @@
 
     <% } %>
 </ul>
+
+<%~ includeFile('./paging.eta', {onePageItemsAmount: it.onePageCategoriesAmount, array: it.categories, currentPage: it.currentPage}) %>
 
 <script src="/scripts/categories.js"></script>
 <script src="/scripts/validation.js"></script>
