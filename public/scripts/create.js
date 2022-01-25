@@ -18,14 +18,8 @@ createForm.addEventListener('submit', handlerCreate);
 function handlerCreate(event) {
 	event.preventDefault();
 
-	/*let formData = new FormData(event.target);
-
-	let newTodo = {};
-	formData.forEach((value, key) => newTodo[key] = value);*/
-
 	let newTodo = window.createObjectFromFormFields(createForm);
-
-	console.log(newTodo);
+	newTodo.categoryIds = newTodo.categoryIds.map(id => Number(id));
 
 	window.clearValidationErrors();
 

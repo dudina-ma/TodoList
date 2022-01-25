@@ -17,8 +17,8 @@ const apiRoutes = [
 				todos.unshift({
 					id: newId,
 					title: body.title,
-					isDone: body.isDone,
-					category: categories.find(i => i.title === body.category).id,
+					isDone: false,
+					categoryIds: body.categoryIds,
 					isUrgent: body.isUrgent,
 					description: body.description,
 					creationDate: new Date(),
