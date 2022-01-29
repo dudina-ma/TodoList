@@ -37,7 +37,7 @@ const server = http.createServer((request, response) => {
 
 		if (data && typeof data === 'object') {
 			data.currentUrl = url;
-			data.extendQueryParams = extendQueryParams;
+			data.extendQueryParams = extendQueryParams(url.query);
 		}
 
 		eta.renderFile(filePath, data, (error, html) => {
