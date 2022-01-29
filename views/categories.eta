@@ -39,7 +39,7 @@
     <% } %>
 </ul>
 
-<%~ includeFile('./paging.eta', {onePageItemsAmount: it.onePageCategoriesAmount, array: it.categories, currentPage: it.currentPage}) %>
+<%~ includeFile('./paging.eta', { onePageItemsAmount: it.onePageCategoriesAmount, array: it.categories, ...it }) %>
 
 <script src="/scripts/categories.js"></script>
 <script src="/scripts/validation.js"></script>

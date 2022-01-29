@@ -8,7 +8,7 @@ const Url = require('url-parse');
 
 const apiRoutes = require('./routes/apiRoutes');
 const pageRoutes = require('./routes/pageRoutes');
-const { getMatchingRoute } = require('./routes/routeHelper');
+const { getMatchingRoute, extendQueryParams } = require('./routes/routeHelper');
 
 const server = http.createServer((request, response) => {
 	console.log(request.url);
@@ -34,6 +34,12 @@ const server = http.createServer((request, response) => {
 		const filePath = path.join(__dirname, 'views', pageRoute.route.page);
 
 		const data = pageRoute.route.getData && pageRoute.route.getData(pageRoute.params, url.query);
+
+		if (data && typeof data === 'object') {
+			data.currentUrl = url;
+			data.extendQueryParams = extendQueryParams;
+		}
+
 		eta.renderFile(filePath, data, (error, html) => {
 			// TODO: решать, какой надо код ошибки по error
 			if (error) {

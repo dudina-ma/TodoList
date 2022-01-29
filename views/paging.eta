@@ -4,27 +4,27 @@
 
     <% if (lastPageNumber > 1) { %>
         <% if (it.currentPage >= 3) { %>
-            <a href="?page=1" class="page-number">1</a>
+            <a href="<%= it.extendQueryParams(it.currentUrl.query, { page: 1 }) %>" class="page-number">1</a>
         <% } %>
         <% if (it.currentPage >= 4) { %>
             <span class="page-number">…</span>
         <% } %>
 
         <% if (it.currentPage - 1 > 0) { %>
-            <a href="?page=<%= it.currentPage - 1%>" class="page-number"><%= it.currentPage - 1 %></a>
+            <a href="<%= it.extendQueryParams(it.currentUrl.query, { page: it.currentPage - 1 }) %>" class="page-number"><%= it.currentPage - 1 %></a>
         <% } %>
 
         <a title="current page" class="page-number current-page"><%= it.currentPage %></a>
 
         <% if(it.currentPage + 1 <= lastPageNumber) { %>
-            <a href="?page=<%= it.currentPage + 1%>" class="page-number"><%= it.currentPage + 1 %></a>
+            <a href="<%= it.extendQueryParams(it.currentUrl.query, { page: it.currentPage + 1 }) %>" class="page-number"><%= it.currentPage + 1 %></a>
         <% } %>
 
         <% if (lastPageNumber - it.currentPage >= 3) { %>
             <span class="page-number">…</span>
         <% } %>
         <% if (lastPageNumber - it.currentPage >= 2) { %>
-            <a href="?page=<%= lastPageNumber %>" class="page-number"><%= lastPageNumber %></a>
+            <a href="<%= it.extendQueryParams(it.currentUrl.query, { page: lastPageNumber }) %>" class="page-number"><%= lastPageNumber %></a>
         <% } %>
     <% } %>
 
