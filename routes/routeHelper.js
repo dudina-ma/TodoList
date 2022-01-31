@@ -42,6 +42,21 @@
 	return null;
 }
 
+function extendQueryParams(query) {
+	return function(extender) {
+		const newQuery = Object.assign({}, query, extender);
+		let result = '?';
+
+		for (const [key, value] of Object.entries(newQuery)) {
+			result += key + '=' + encodeURIComponent(value) + '&';
+		}
+
+		result = result.slice(0, -1); // trim last char
+		return result;
+	};
+}
+
 module.exports = {
-	getMatchingRoute
+	getMatchingRoute,
+	extendQueryParams
 };
