@@ -63,4 +63,4 @@
 <% } %>
 <script src="/scripts/index.js"></script>
 
-<%~ includeFile('./paging.eta', { onePageItemsAmount: it.onePageTodosAmount, array: it.results, ...it }) %>
+<%~ includeFile('./paging.eta', { onePageItemsNumber: it.onePageTodosNumber, array: it.results, ...it }) %>

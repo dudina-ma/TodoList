@@ -6,7 +6,7 @@ const pageRoutes = [
 		url: '/',
 		page: 'index.eta',
 		getData(params, queryParams) {
-			const onePageTodosAmount = 4;
+			const onePageTodosNumber = 4;
 			let currentPage = Number(queryParams.page ?? 1);
 
 			let results = todos;
@@ -31,7 +31,7 @@ const pageRoutes = [
 				sortTodos(results, true);
 			}
 
-			let todosOnPage = results.slice(onePageTodosAmount * (currentPage - 1), onePageTodosAmount * currentPage);
+			let todosOnPage = results.slice(onePageTodosNumber * (currentPage - 1), onePageTodosNumber * currentPage);
 
 			todosOnPage = todosOnPage.map(item => ({
 				id: item.id,
@@ -48,7 +48,7 @@ const pageRoutes = [
 				todosOnPage,
 				currentPage,
 				searchString: queryParams.search,
-				onePageTodosAmount,
+				onePageTodosNumber: onePageTodosNumber,
 				sort,
 			};
 		}
@@ -81,18 +81,18 @@ const pageRoutes = [
 		url: '/categories/',
 		page: 'categories.eta',
 		getData(params, queryParams) {
-			const onePageCategoriesAmount = 6;
+			const onePageCategoriesNumber = 6;
 			let currentPage = Number(queryParams.page ?? 1);
 
 			let results = categories;
 
-			let categoriesOnPage = results.slice(onePageCategoriesAmount * (currentPage - 1), onePageCategoriesAmount * currentPage);
+			let categoriesOnPage = results.slice(onePageCategoriesNumber * (currentPage - 1), onePageCategoriesNumber * currentPage);
 
 			return {
 				categories: results,
 				categoriesOnPage,
 				currentPage,
-				onePageCategoriesAmount
+				onePageCategoriesNumber: onePageCategoriesNumber
 			};
 		}
 	}

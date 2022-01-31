@@ -15,7 +15,7 @@
     <div class='title-validation-error-place'></div>
 </form>
 
-<% const onePageCategoriesAmount = 8; %>
+<% const onePageCategoriesNumber = 8; %>
 
 <ul class="categories-list">
     <% for (let i = 0; i < it.categoriesOnPage.length; i++) { %>
@@ -39,7 +39,7 @@
     <% } %>
 </ul>
 
-<%~ includeFile('./paging.eta', { onePageItemsAmount: it.onePageCategoriesAmount, array: it.categories, ...it }) %>
+<%~ includeFile('./paging.eta', { onePageItemsNumber: it.onePageCategoriesNumber, array: it.categories, ...it }) %>
 
 <script src="/scripts/categories.js"></script>
 <script src="/scripts/validation.js"></script>
