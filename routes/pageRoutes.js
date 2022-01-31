@@ -56,26 +56,27 @@ const pageRoutes = [
 		}
 	},
 	{
-		url: '/todo/:id/',
-		page: 'todo.eta',
-		getData(params) {
-			return todos.find(t => t.id === Number(params.id));
-		}
-	},
-	{
 		url: '/create/',
-		page: 'create.eta',
+		page: 'createAndEdit.eta',
 		getData() {
 			return {
 				categories,
+				formName: 'Create new TODO',
+				submitBtnValue: 'Create',
 			};
 		}
 	},
 	{
 		url: '/:id/edit/',
-		page: 'edit.eta',
+		page: 'createAndEdit.eta',
 		getData(params) {
-			return todos.find(t => t.id === Number(params.id));
+			return {
+				categories,
+				todoToEdit: todos.find(t => t.id === Number(params.id)),
+				formName: 'Edit your TODO',
+				submitBtnValue: 'Edit',
+				isEditForm: true,
+			};
 		}
 	},
 	{

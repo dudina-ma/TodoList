@@ -1,0 +1,48 @@
+<% layout('./layout') %>
+
+<link rel="stylesheet" href="/styles/lib/slimselect.min.css">
+<link rel="stylesheet" href="/styles/lib/slimselect.min.override.css">
+<link rel="stylesheet" href="/styles/createAndEdit.css">
+
+<h2 class="todo-create-edit-title"><%= it.formName%></h2>
+
+<form class="create-edit-form" data-is-edit-form="<%= it.isEditForm ?? '' %>" data-todo-id="<%= it.isEditForm ? it.todoToEdit.id : "" %>">
+
+	<div class="create-edit-form-grid">
+		<label for="create-edit-title-id" class="create-edit-label">Title</label>
+		<div>
+			<input type="text" name="title" id="create-edit-title-id" maxlength="25" class="create-edit-input-text"
+				value="<%= it.isEditForm ? it.todoToEdit.title : ""%>">
+			<div class="title-validation-error-place"></div>
+		</div>
+
+		<label for="create-edit-description-id" class="create-edit-label">Description</label>
+		<div>
+			<input type="text" name="description" id="create-edit-description-id" maxlength="45"
+				class="create-edit-input-text" value="<%= it.isEditForm ? it.todoToEdit.description : ""%>">
+			<div class="description-validation-error-place"></div>
+		</div>
+
+		<label for="create-edit-category-id" class="create-edit-label">Category</label>
+		<div>
+			<select class="category-select" name="categoryIds" id="create-edit-category-id" multiple>
+				<% for (let i = 0; i < it.categories.length; i++) { %>
+					<% let category = it.categories[i];%>
+					<option value="<%= category.id %>" <%= it.isEditForm && it.todoToEdit.categoryIds.includes(category.id) ? "selected" : ""%>><%= category.title %></option>
+				<% } %>
+			</select>
+			<div class="category-validation-error-place"></div>
+		</div>
+
+		<label for="create-edit-urgency-id" class="create-edit-label">Urgency</label>
+		<input type="checkbox" name="isUrgent" class="is-urgent" id="create-edit-urgency-id"
+			<%= it.isEditForm && it.todoToEdit.isUrgent ? "checked" : ""%>>
+	</div>
+
+	<input type="submit" class="create-edit-btn" value="<%= it.submitBtnValue %>">
+</form>
+
+<script src="/scripts/lib/slimselect.min.js"></script>
+<script src="/scripts/createObjectFromFormFields.js"></script>
+<script src="/scripts/validation.js"></script>
+<script src="/scripts/createAndEdit.js"></script>

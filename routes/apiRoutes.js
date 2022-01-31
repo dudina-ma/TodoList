@@ -9,8 +9,8 @@ const apiRoutes = [
 		action(_, __, body) {
 			const validationResult = {};
 
-			checkField(body.title, 'title', 15, validationResult, true);
-			checkField(body.description, 'description', 25, validationResult, false);
+			checkField(body.title, 'title', 25, validationResult, true);
+			checkField(body.description, 'description', 45, validationResult, false);
 
 			if (Object.keys(validationResult).length === 0) {
 				const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
@@ -50,11 +50,22 @@ const apiRoutes = [
 		url: '/api/todo/:id/edit/',
 		method: 'POST',
 		action(params, __, body) {
-			const idNumber = Number(params.id);
-			let todoToEdit = todos.findIndex(item => item.id === idNumber);
-			todos[todoToEdit].title = body.title;
-			todos[todoToEdit].description = body.description;
-			todos[todoToEdit].isUrgent = body.isUrgent;
+			const validationResult = {};
+
+			checkField(body.title, 'title', 25, validationResult, true);
+			checkField(body.description, 'description', 45, validationResult, false);
+
+			if (Object.keys(validationResult).length === 0) {
+				const idNumber = Number(params.id);
+				let todoToEdit = todos.findIndex(item => item.id === idNumber);
+
+				todos[todoToEdit].title = body.title;
+				todos[todoToEdit].description = body.description;
+				todos[todoToEdit].categoryIds = body.categoryIds;
+				todos[todoToEdit].isUrgent = body.isUrgent;
+			}
+
+			return validationResult;
 		}
 	},
 	{

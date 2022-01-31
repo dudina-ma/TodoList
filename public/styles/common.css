@@ -8,12 +8,12 @@ p, h2 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.create-btn {
+.create-btn, .create-edit-btn {
     width: 140px;
     height: 30px;
 }
 
-.create-btn, .back-to-list-btn, .category-create-form-btn, .category-edit-form-btn, .delete-done-todos {
+.create-btn, .create-edit-btn, .back-to-list-btn, .category-create-form-btn, .category-edit-form-btn, .delete-done-todos {
     text-decoration: none;
     display: block;
     background-color: #093001;
@@ -34,29 +34,29 @@ p, h2 {
     align-items: center;
 }
 
-.create-btn:hover, .back-to-list-btn:hover, .delete-done-todos:hover {
+.create-btn:hover, .create-edit-btn:hover, .back-to-list-btn:hover, .delete-done-todos:hover {
     font-size: 17px;
 	cursor: pointer;
 }
 
-.create-btn:active, .back-to-list-btn:active, .delete-done-todos:active {
+.create-btn:active, .create-edit-btn:active, .back-to-list-btn:active, .delete-done-todos:active {
     background-color: white;
     color: #093001;
 }
 
-.create-form-grid {
+.create-edit-form-grid {
     display: grid;
     grid-template-columns: 80px 310px;
     grid-template-rows: auto auto auto;
     gap: 10px;
 }
 
-.create-input-text {
+.create-edit-input-text {
     width: 290px;
     height: 20px;
 }
 
-.todo-create-title {
+.todo-create-edit-title {
     margin: 15px 15px 15px 0;
 }
 
@@ -91,7 +91,7 @@ p, h2 {
     color: red;
 }
 
-.error.create-input-text:focus {
+.error.create-edit-input-text:focus {
     outline: 1px red solid;
 }
 
