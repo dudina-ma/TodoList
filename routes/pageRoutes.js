@@ -23,12 +23,10 @@ const pageRoutes = [
 
 			const { sortTodos } = require('../helpers/todosSorting');
 
-			if (queryParams.sort) {
-				if (queryParams.sort === 'date') {
-					sortTodos(results, false);
-				} else {
-					sortTodos(results, true);
-				}
+			const sort = queryParams.sort ?? '-date';
+
+			if (sort === 'date') {
+				sortTodos(results, false);
 			} else {
 				sortTodos(results, true);
 			}

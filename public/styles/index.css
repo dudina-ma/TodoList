@@ -169,6 +169,7 @@ height: 20px;
 
 .sorting-options {
 	text-decoration: underline;
+	color: black;
 }
 
 .sorting-options:visited {
