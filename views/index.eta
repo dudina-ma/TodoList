@@ -25,7 +25,7 @@
 <p class="sorting">Sort:</p>
 <a class="sorting-options oldest-to-newest <%= it.sort === "date" ? "chosen" : ""%>" href="/<%= it.extendQueryParams({ sort: 'date', page: 1 }) %>">Oldest to newest</a>
 <span> | </span>
-<a class="sorting-options newest-to-oldest <%= (it.sort === "-date" || it.sort === undefined) ? "chosen" : ""%>" href="/<%= it.extendQueryParams({ sort: '-date', page: 1 }) %>">Newest to oldest</a>
+<a class="sorting-options newest-to-oldest <%= it.sort === "-date" ? "chosen" : ""%>" href="/<%= it.extendQueryParams({ sort: '-date', page: 1 }) %>">Newest to oldest</a>
 
 <% for (let i = 0; i < it.todosOnPage.length; i++) { %>
     <% let todo = it.todosOnPage[i];%>
