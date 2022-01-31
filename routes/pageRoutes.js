@@ -1,5 +1,6 @@
 ﻿const { todos } = require('../store');
 const { categories } = require('../store');
+const { getItemsOnCurrentPage } = require('../helpers/getItemsOnCurrentPage');
 
 const pageRoutes = [
 	{
@@ -31,7 +32,7 @@ const pageRoutes = [
 				sortTodos(results, true);
 			}
 
-			let todosOnPage = results.slice(onePageTodosNumber * (currentPage - 1), onePageTodosNumber * currentPage);
+			let todosOnPage = getItemsOnCurrentPage(results, onePageTodosNumber, currentPage);
 
 			todosOnPage = todosOnPage.map(item => ({
 				id: item.id,
@@ -86,7 +87,7 @@ const pageRoutes = [
 
 			let results = categories;
 
-			let categoriesOnPage = results.slice(onePageCategoriesNumber * (currentPage - 1), onePageCategoriesNumber * currentPage);
+			let categoriesOnPage = getItemsOnCurrentPage(results, onePageCategoriesNumber, currentPage);
 
 			return {
 				categories: results,
