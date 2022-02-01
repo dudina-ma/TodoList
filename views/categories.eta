@@ -15,15 +15,13 @@
     <div class='title-validation-error-place'></div>
 </form>
 
-<% const onePageCategoriesNumber = 8; %>
-
 <ul class="categories-list">
     <% for (let i = 0; i < it.categoriesOnPage.length; i++) { %>
         <% let category = it.categoriesOnPage[i];%>
 
-		<div class="category-container" data-category-id="<%= category.id %>">
+		<li class="category-container" data-category-id="<%= category.id %>">
 			<div class='category' data-category-id="<%= category.id %>">
-				<li class="category-title"><%= category.title %></li>
+				<div class="category-title"><%= category.title %></div>
 				<div class="category-controllers">
 					<button type="button" class="edit-btn" data-category-id="<%= category.id %>"></button>
 					<button type="button" class="delete-btn" data-category-id="<%= category.id %>"></button>
@@ -34,7 +32,7 @@
 				<input type='submit' value='Edit category' class='category-edit-form-btn'>
 				<div class='title-validation-error-place'></div>
 			</form>
-		</div>
+		</li>
 
     <% } %>
 </ul>

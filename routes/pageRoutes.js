@@ -85,12 +85,10 @@ const pageRoutes = [
 			const onePageCategoriesNumber = 6;
 			let currentPage = Number(queryParams.page ?? 1);
 
-			let results = categories;
-
-			let categoriesOnPage = getItemsOnCurrentPage(results, onePageCategoriesNumber, currentPage);
+			let categoriesOnPage = getItemsOnCurrentPage(categories, onePageCategoriesNumber, currentPage);
 
 			return {
-				categories: results,
+				categories,
 				categoriesOnPage,
 				currentPage,
 				onePageCategoriesNumber: onePageCategoriesNumber
