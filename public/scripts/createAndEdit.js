@@ -12,9 +12,9 @@ function clearValidationErrorsOnInput(form) {
 
 clearValidationErrorsOnInput(createEditForm);
 
-createEditForm.addEventListener('submit', handlerCreate);
+createEditForm.addEventListener('submit', createAndEditTodo);
 
-function handlerCreate(event) {
+function createAndEditTodo(event) {
 	event.preventDefault();
 
 	let newOrEditedTodo = window.createObjectFromFormFields(createEditForm);

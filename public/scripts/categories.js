@@ -13,9 +13,9 @@ function showCreateForm() {
 	categoryCreateFormField.focus();
 }
 
-categoryCreateFormOnPage.addEventListener('submit', handlerCreate);
+categoryCreateFormOnPage.addEventListener('submit', сreateСategory);
 
-function handlerCreate(event) {
+function сreateСategory(event) {
 	event.preventDefault();
 
 	let formData = new FormData(event.target);
@@ -72,24 +72,24 @@ function clearValidationErrorsOnInput(form) {
 clearValidationErrorsOnInput(categoryCreateFormOnPage);
 
 const categoryList = document.querySelector('.categories-list');
-categoryList.addEventListener('click', handlerAddHandlers);
+categoryList.addEventListener('click', addHandlers);
 
-function handlerAddHandlers(event) {
+function addHandlers(event) {
 	let target = event.target;
 	const categoryId = event.target.dataset.categoryId;
 
 	if (target.classList.contains('delete-btn')) {
-		handlerDelete(categoryId);
+		deleteCategory(categoryId);
 	}
 
 	if (target.classList.contains('edit-btn')) {
-		handlerEdit(categoryId);
+		editCategory(categoryId);
 	}
 }
 
 
 // delete
-function handlerDelete(categoryId) {
+function deleteCategory(categoryId) {
 	window.Modal.showConfirm('Delete category', 'Do you really want to delete category?', onConfirmDelete);
 
 	function onConfirmDelete() {
@@ -108,7 +108,7 @@ function handlerDelete(categoryId) {
 }
 
 // edit
-function handlerEdit(categoryId) {
+function editCategory(categoryId) {
 	const category = document.querySelector('.category[data-category-id="' + categoryId + '"]');
 	category.classList.add('invisible');
 

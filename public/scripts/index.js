@@ -3,10 +3,10 @@
 	const todos = document.querySelectorAll('.todo');
 
 	for (let todo of todos) {
-		todo.addEventListener('change', handlerCheck);
+		todo.addEventListener('change', checkTodo);
 	}
 
-	function handlerCheck(event) {
+	function checkTodo(event) {
 		const todo = event.currentTarget;
 		fetch('/api/todo/' + todo.dataset.todoId + '/check/' + event.target.checked, {method: 'POST'})
 			.then(() => {
@@ -18,10 +18,10 @@
 	const deleteBtns = document.querySelectorAll('.delete-btn');
 
 	for (let deleteBtn of deleteBtns) {
-		deleteBtn.addEventListener('click', handlerDelete);
+		deleteBtn.addEventListener('click', deleteTodo);
 	}
 
-	function handlerDelete(event) {
+	function deleteTodo(event) {
 		const todoId = event.currentTarget.dataset.todoId;
 
 		window.Modal.showConfirm('Delete todo', 'Do you really want to delete todo?', onConfirmDelete);
