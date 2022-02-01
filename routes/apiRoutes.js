@@ -126,10 +126,10 @@ const apiRoutes = [
 		action(params) {
 			const categoryId = Number(params.id);
 			let categoryIdToDelete = categories.findIndex(item => item.id === categoryId);
-			let categoryTodos = todos.find(item => item.category === categoryId);
+			let hasCategories = todos.some(item => item.categoryIds.includes(categoryId));
 			let result = {};
 			result.isDeleted = false;
-			if (!categoryTodos) {
+			if (!hasCategories) {
 				categories.splice(categoryIdToDelete, 1);
 				result.isDeleted = true;
 			}
