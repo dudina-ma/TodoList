@@ -1,7 +1,33 @@
-const { checkFieldLength } = require('../validation/checkFieldLength');
-const { checkHasSwearing } = require('../validation/checkHasSwearing');
-const { addError } = require('../validation/addError');
-const { checkFieldIsEmpty } = require('../validation/checkFieldIsEmpty');
+function checkFieldIsEmpty (field) {
+	return field.length === 0;
+}
+
+function checkFieldLength (field, length) {
+	return field.length <= length;
+}
+
+function checkHasSwearing(field) {
+	const swearings = ['fuck', 'shit'];
+
+	let hasSwearings = false;
+
+	for (let swearing of swearings) {
+		if (field.toLowerCase().includes(swearing)) {
+			hasSwearings = true;
+			break;
+		}
+	}
+
+	return hasSwearings;
+}
+
+function addError(validationResult, field, notificationText) {
+	let errorArray = validationResult[field] ?? [];
+
+	errorArray.push(notificationText);
+
+	validationResult[field] = errorArray;
+}
 
 function checkField(field, fieldName, fieldMaxLength, validationResult, shouldCheckEmptiness) {
 	const isFieldLengthOk = checkFieldLength(field, fieldMaxLength);

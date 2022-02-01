@@ -1,5 +1,5 @@
 ﻿const { todos } = require('../store');
-const { checkField } = require('../validation/checkField');
+const { checkField } = require('../routes/validation');
 const { categories } = require('../store');
 
 const apiRoutes = [

@@ -11,14 +11,14 @@
 	<div class="create-edit-form-grid">
 		<label for="create-edit-title-id" class="create-edit-label">Title</label>
 		<div>
-			<input type="text" name="title" id="create-edit-title-id" maxlength="25" class="create-edit-input-text"
+			<input type="text" name="title" id="create-edit-title-id" maxlength="30" class="create-edit-input-text"
 				value="<%= it.isEditForm ? it.todoToEdit.title : ""%>">
 			<div class="title-validation-error-place"></div>
 		</div>
 
 		<label for="create-edit-description-id" class="create-edit-label">Description</label>
 		<div>
-			<input type="text" name="description" id="create-edit-description-id" maxlength="45"
+			<input type="text" name="description" id="create-edit-description-id" maxlength="50"
 				class="create-edit-input-text" value="<%= it.isEditForm ? it.todoToEdit.description : ""%>">
 			<div class="description-validation-error-place"></div>
 		</div>
