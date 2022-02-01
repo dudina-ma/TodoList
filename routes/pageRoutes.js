@@ -19,7 +19,8 @@ const pageRoutes = [
 			}
 
 			if (queryParams.category) {
-				results = results.filter(result => result.categoryIds.includes(categories.find(i => i.title === queryParams.category).id));
+				let categoryId = Number(queryParams.category);
+				results = results.filter(result => result.categoryIds.includes(categoryId));
 			}
 
 			const { sortTodos } = require('../helpers/todosSorting');
@@ -38,7 +39,7 @@ const pageRoutes = [
 				id: item.id,
 				title: item.title,
 				isDone: item.isDone,
-				categoriesTitles: item.categoryIds.map(id => categories.find(c => c.id === id).title),
+				categories: categories.filter(category => item.categoryIds.includes(category.id)),
 				isUrgent: item.isUrgent,
 				description: item.description,
 				creationDate: item.creationDate,

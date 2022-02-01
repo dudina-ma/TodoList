@@ -54,8 +54,8 @@
 		<p class="todo-creation-date"><%= todo.creationDate.toLocaleDateString() %> <%= todo.creationDate.toLocaleTimeString() %></p>
 
 		<div class="categories">
-			<% for (category of todo.categoriesTitles) { %>
-				<a href="/?category=<%= category %>" class="todo-category"><%= category %></a>
+			<% for (category of todo.categories) { %>
+				<a href="/?category=<%= category.id %>" class="todo-category"><%= category.title %></a>
 			<% } %>
 		</div>
     </div>
