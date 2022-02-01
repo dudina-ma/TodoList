@@ -10,9 +10,9 @@
 </div>
 
  <form class='category-create-form invisible'>
-    <input type='text' name='title' class='category-create-form-field' maxlength="15">
+    <input type='text' name='title-create' class='category-create-form-field' maxlength="15">
     <input type='submit' value='Add category' class='category-create-form-btn'>
-    <div class='title-validation-error-place'></div>
+    <div class='title-create-validation-error-place'></div>
 </form>
 
 <ul class="categories-list">
@@ -28,9 +28,9 @@
 				</div>
 			</div>
 			<form class='category-edit-form invisible' data-category-id="<%= category.id %>">
-				<input type='text' name='title' class='category-edit-form-field' maxlength="15" value=<%= category.title %>>
+				<input type='text' name='title-edit' class='category-edit-form-field' maxlength="15" value=<%= category.title %>>
 				<input type='submit' value='Edit category' class='category-edit-form-btn'>
-				<div class='title-validation-error-place'></div>
+				<div class='title-edit-validation-error-place'></div>
 			</form>
 		</li>
 

@@ -40,8 +40,8 @@ function createAndEditTodo(event) {
 		},
 	}).then(response => response.json()
 	).then(result => {
-		if (Object.keys(result).length !== 0) {
-			window.addValidationErrors(result);
+		if (result.validationResult) {
+			window.addValidationErrors(result.validationResult);
 		} else {
 			window.location.href = '/';
 		}

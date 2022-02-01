@@ -13,9 +13,9 @@ function showCreateForm() {
 	categoryCreateFormField.focus();
 }
 
-categoryCreateFormOnPage.addEventListener('submit', сreateСategory);
+categoryCreateFormOnPage.addEventListener('submit', createCategory);
 
-function сreateСategory(event) {
+function createCategory(event) {
 	event.preventDefault();
 
 	let formData = new FormData(event.target);
@@ -53,9 +53,9 @@ function сreateСategory(event) {
 				</div>
 			</div>
 			<form class='category-edit-form invisible' data-category-id="${result.newId}">
-				<input type='text' name='title' class='category-edit-form-field' maxlength="15" value=${newCategory.title}>
+				<input type='text' name='title-edit' class='category-edit-form-field' maxlength="15" value=${newCategory.title}>
 				<input type='submit' value='Edit category' class='category-edit-form-btn'>
-				<div class='title-validation-error-place'></div>
+				<div class='title-edit-validation-error-place'></div>
 			</form>
 		</div>`;
 
@@ -113,7 +113,7 @@ function editCategory(categoryId) {
 	category.classList.add('invisible');
 
 	const categoryEditForm = document.querySelector('.category-edit-form[data-category-id="' + categoryId + '"]');
-	const categoryEditFormField = document.querySelector('.category-edit-form[data-category-id="' + categoryId + '"] > input[name="title"]');
+	const categoryEditFormField = document.querySelector('.category-edit-form[data-category-id="' + categoryId + '"] > input[name="title-edit"]');
 
 	categoryEditForm.classList.remove('invisible');
 	categoryEditFormField.focus();
@@ -143,7 +143,7 @@ function editCategory(categoryId) {
 			},
 		}).then(response => response.json()
 		).then(result => {
-			if (Object.keys(result.validationResult).length !== 0) {
+			if (result.validationResult) {
 				window.addValidationErrors(result.validationResult);
 				return;
 			}

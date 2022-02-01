@@ -12,20 +12,22 @@ const apiRoutes = [
 			checkField(body.title, 'title', 25, validationResult, true);
 			checkField(body.description, 'description', 45, validationResult, false);
 
-			if (Object.keys(validationResult).length === 0) {
-				const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
-				todos.unshift({
-					id: newId,
-					title: body.title,
-					isDone: false,
-					categoryIds: body.categoryIds,
-					isUrgent: body.isUrgent,
-					description: body.description,
-					creationDate: new Date(),
-				});
+			if (Object.keys(validationResult).length > 0) {
+				return {validationResult};
 			}
 
-			return validationResult;
+			const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
+			todos.unshift({
+				id: newId,
+				title: body.title,
+				isDone: false,
+				categoryIds: body.categoryIds,
+				isUrgent: body.isUrgent,
+				description: body.description,
+				creationDate: new Date(),
+			});
+
+			return {success: true};
 		}
 	},
 	{
@@ -55,17 +57,19 @@ const apiRoutes = [
 			checkField(body.title, 'title', 25, validationResult, true);
 			checkField(body.description, 'description', 45, validationResult, false);
 
-			if (Object.keys(validationResult).length === 0) {
-				const idNumber = Number(params.id);
-				let todoToEdit = todos.findIndex(item => item.id === idNumber);
-
-				todos[todoToEdit].title = body.title;
-				todos[todoToEdit].description = body.description;
-				todos[todoToEdit].categoryIds = body.categoryIds;
-				todos[todoToEdit].isUrgent = body.isUrgent;
+			if (Object.keys(validationResult).length > 0) {
+				return {validationResult};
 			}
 
-			return validationResult;
+			const idNumber = Number(params.id);
+			let todoToEdit = todos.findIndex(item => item.id === idNumber);
+
+			todos[todoToEdit].title = body.title;
+			todos[todoToEdit].description = body.description;
+			todos[todoToEdit].categoryIds = body.categoryIds;
+			todos[todoToEdit].isUrgent = body.isUrgent;
+
+			return {success: true};
 		}
 	},
 	{
@@ -86,16 +90,18 @@ const apiRoutes = [
 		action(params, __, body) {
 			const validationResult = {};
 
-			checkField(body.title, 'title', 15, validationResult, true);
+			checkField(body['title-edit'], 'title-edit', 15, validationResult, true);
 
 			const idNumber = Number(params.id);
 
-			if (Object.keys(validationResult).length === 0) {
-				let categoryToEdit = categories.findIndex(item => item.id === idNumber);
-				categories[categoryToEdit].title = body.title;
+			if (Object.keys(validationResult).length > 0) {
+				return {validationResult};
 			}
 
-			return { validationResult };
+			let categoryToEdit = categories.findIndex(item => item.id === idNumber);
+			categories[categoryToEdit].title = body.title;
+
+			return { success: true };
 		}
 	},
 	{
@@ -104,20 +110,21 @@ const apiRoutes = [
 		action(_, __, body) {
 			const validationResult = {};
 
-			checkField(body.title, 'title', 15, validationResult, true);
+			checkField(body['title-create'], 'title-create', 15, validationResult, true);
+
+			if (Object.keys(validationResult).length > 0) {
+				return {validationResult};
+			}
 
 			let newId;
 
-			if (Object.keys(validationResult).length === 0) {
-				newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
-				categories.push({
-					id: newId,
-					...body
-				});
-				return { newId };
-			}
+			newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
+			categories.push({
+				id: newId,
+				...body
+			});
 
-			return { validationResult };
+			return { success: true, newId };
 		}
 	},
 	{
