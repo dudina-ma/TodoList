@@ -9,23 +9,23 @@
 <form class="create-edit-form" data-is-edit-form="<%= it.isEditForm ?? '' %>" data-todo-id="<%= it.isEditForm ? it.todoToEdit.id : "" %>">
 
 	<div class="create-edit-form-grid">
-		<label for="create-edit-title-id" class="create-edit-label">Title</label>
+		<label for="create-edit-title" class="create-edit-label">Title</label>
 		<div>
-			<input type="text" name="title" id="create-edit-title-id" maxlength="30" class="create-edit-input-text"
+			<input type="text" name="title" id="create-edit-title" maxlength="30" class="create-edit-input-text"
 				value="<%= it.isEditForm ? it.todoToEdit.title : ""%>">
 			<div class="title-validation-error-place"></div>
 		</div>
 
-		<label for="create-edit-description-id" class="create-edit-label">Description</label>
+		<label for="create-edit-description" class="create-edit-label">Description</label>
 		<div>
-			<input type="text" name="description" id="create-edit-description-id" maxlength="50"
+			<input type="text" name="description" id="create-edit-description" maxlength="50"
 				class="create-edit-input-text" value="<%= it.isEditForm ? it.todoToEdit.description : ""%>">
 			<div class="description-validation-error-place"></div>
 		</div>
 
-		<label for="create-edit-category-id" class="create-edit-label">Category</label>
+		<label for="create-edit-category" class="create-edit-label">Category</label>
 		<div>
-			<select class="category-select" name="categoryIds" id="create-edit-category-id" multiple>
+			<select class="category-select" name="categoryIds" id="create-edit-category" multiple>
 				<% for (let i = 0; i < it.categories.length; i++) { %>
 					<% let category = it.categories[i];%>
 					<option value="<%= category.id %>" <%= it.isEditForm && it.todoToEdit.categoryIds.includes(category.id) ? "selected" : ""%>><%= category.title %></option>
@@ -34,8 +34,8 @@
 			<div class="category-validation-error-place"></div>
 		</div>
 
-		<label for="create-edit-urgency-id" class="create-edit-label">Urgency</label>
-		<input type="checkbox" name="isUrgent" class="is-urgent" id="create-edit-urgency-id"
+		<label for="create-edit-urgency" class="create-edit-label">Urgency</label>
+		<input type="checkbox" name="isUrgent" class="is-urgent" id="create-edit-urgency"
 			<%= it.isEditForm && it.todoToEdit.isUrgent ? "checked" : ""%>>
 	</div>
 
