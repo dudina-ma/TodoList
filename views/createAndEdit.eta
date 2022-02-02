@@ -31,7 +31,7 @@
 					<option value="<%= category.id %>" <%= it.isEditForm && it.todoToEdit.categoryIds.includes(category.id) ? "selected" : ""%>><%= category.title %></option>
 				<% } %>
 			</select>
-			<div class="category-validation-error-place"></div>
+			<div class="categoryIds-validation-error-place"></div>
 		</div>
 
 		<label for="create-edit-urgency" class="create-edit-label">Urgency</label>

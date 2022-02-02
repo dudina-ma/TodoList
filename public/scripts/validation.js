@@ -2,7 +2,7 @@ window.addValidationErrors = function(validationResults, form) {
 	let root = form ?? document;
 
 	for (let result of Object.keys(validationResults)) {
-		const field = root.querySelector('input[name=\'' + result + '\']'); // ищется первое поле, а не поле конкретной категории
+		const field = root.querySelector('[name=\'' + result + '\']');
 		field.classList.add('error');
 		for (let i = 0; i < validationResults[result].length; i++) {
 			const validationError = document.createElement('div');

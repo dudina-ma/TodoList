@@ -1,5 +1,6 @@
 ﻿const { todos } = require('../store');
-const { checkField } = require('../routes/validation');
+const { checkTextField } = require('../routes/validation');
+const { checkArrayFieldEmptiness } = require('../routes/validation');
 const { categories } = require('../store');
 
 const apiRoutes = [
@@ -9,8 +10,9 @@ const apiRoutes = [
 		action(_, __, body) {
 			const validationResult = {};
 
-			checkField(body.title, 'title', 25, validationResult, true);
-			checkField(body.description, 'description', 45, validationResult, false);
+			checkTextField(body.title, 'title', 25, validationResult, true);
+			checkTextField(body.description, 'description', 45, validationResult, false);
+			checkArrayFieldEmptiness(body.categoryIds, 'categoryIds', validationResult);
 
 			if (Object.keys(validationResult).length > 0) {
 				return {validationResult};
@@ -54,8 +56,9 @@ const apiRoutes = [
 		action(params, __, body) {
 			const validationResult = {};
 
-			checkField(body.title, 'title', 25, validationResult, true);
-			checkField(body.description, 'description', 45, validationResult, false);
+			checkTextField(body.title, 'title', 25, validationResult, true);
+			checkTextField(body.description, 'description', 45, validationResult, false);
+			checkArrayFieldEmptiness(body.categoryIds, 'categoryIds', validationResult);
 
 			if (Object.keys(validationResult).length > 0) {
 				return {validationResult};
@@ -90,7 +93,7 @@ const apiRoutes = [
 		action(params, __, body) {
 			const validationResult = {};
 
-			checkField(body['title-edit'], 'title-edit', 15, validationResult, true);
+			checkTextField(body['title-edit'], 'title-edit', 15, validationResult, true);
 
 			const idNumber = Number(params.id);
 
@@ -110,7 +113,7 @@ const apiRoutes = [
 		action(_, __, body) {
 			const validationResult = {};
 
-			checkField(body['title-create'], 'title-create', 15, validationResult, true);
+			checkTextField(body['title-create'], 'title-create', 15, validationResult, true);
 
 			if (Object.keys(validationResult).length > 0) {
 				return {validationResult};

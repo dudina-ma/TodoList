@@ -1,18 +1,18 @@
-function checkFieldIsEmpty (field) {
-	return field.length === 0;
+function checkFieldIsEmpty (fieldValue) {
+	return fieldValue.length === 0;
 }
 
-function checkFieldLength (field, length) {
-	return field.length <= length;
+function checkTextFieldLength (fieldValue, length) {
+	return fieldValue.length <= length;
 }
 
-function checkHasSwearing(field) {
+function checkHasSwearing(fieldValue) {
 	const swearings = ['fuck', 'shit'];
 
 	let hasSwearings = false;
 
 	for (let swearing of swearings) {
-		if (field.toLowerCase().includes(swearing)) {
+		if (fieldValue.toLowerCase().includes(swearing)) {
 			hasSwearings = true;
 			break;
 		}
@@ -21,18 +21,18 @@ function checkHasSwearing(field) {
 	return hasSwearings;
 }
 
-function addError(validationResult, field, notificationText) {
-	let errorArray = validationResult[field] ?? [];
+function addError(validationResult, fieldName, notificationText) {
+	let errorArray = validationResult[fieldName] ?? [];
 
 	errorArray.push(notificationText);
 
-	validationResult[field] = errorArray;
+	validationResult[fieldName] = errorArray;
 }
 
-function checkField(field, fieldName, fieldMaxLength, validationResult, shouldCheckEmptiness) {
-	const isFieldLengthOk = checkFieldLength(field, fieldMaxLength);
-	const fieldHasSwearing = checkHasSwearing(field);
-	const fieldIsEmpty = checkFieldIsEmpty(field);
+function checkTextField(fieldValue, fieldName, fieldMaxLength, validationResult, shouldCheckEmptiness) {
+	const isFieldLengthOk = checkTextFieldLength(fieldValue, fieldMaxLength);
+	const fieldHasSwearing = checkHasSwearing(fieldValue);
+	const fieldIsEmpty = checkFieldIsEmpty(fieldValue);
 
 	if (!isFieldLengthOk) {
 		addError(validationResult, fieldName, 'The field is too long. It must be shorter than ' + fieldMaxLength + ' symbols.');
@@ -49,6 +49,14 @@ function checkField(field, fieldName, fieldMaxLength, validationResult, shouldCh
 	}
 }
 
+function checkArrayFieldEmptiness(fieldValue, fieldName, validationResult) {
+	const fieldIsEmpty = checkFieldIsEmpty(fieldValue);
+	if (fieldIsEmpty) {
+		addError(validationResult, fieldName, 'Field is required.');
+	}
+}
+
 module.exports = {
-	checkField
+	checkTextField,
+	checkArrayFieldEmptiness
 };

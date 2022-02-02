@@ -12,6 +12,19 @@ function clearValidationErrorsOnInput(form) {
 
 clearValidationErrorsOnInput(createEditForm);
 
+
+const createEditFormSelects = document.querySelectorAll('.create-edit-form select');
+
+function clearValidationErrorsOnChange(selects) {
+	for (let select of selects) {
+		select.addEventListener('change', () => {
+			window.clearValidationErrors();
+		});
+	}
+}
+
+clearValidationErrorsOnChange(createEditFormSelects);
+
 createEditForm.addEventListener('submit', createAndEditTodo);
 
 function createAndEditTodo(event) {

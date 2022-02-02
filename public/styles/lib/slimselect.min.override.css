@@ -17,3 +17,11 @@
 .ss-main .ss-single-selected .placeholder .ss-disabled, .ss-main .ss-multi-selected .ss-values .ss-disabled {
 	color: rgb(118, 118, 118);
 }
+
+.ss-main.error {
+	outline: none;
+}
+
+.ss-main.error .ss-multi-selected {
+	border: 1px solid red;
+}
