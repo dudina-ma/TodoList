@@ -99,7 +99,7 @@ const apiRoutes = [
 			}
 
 			let categoryToEdit = categories.findIndex(item => item.id === idNumber);
-			categories[categoryToEdit].title = body.title;
+			categories[categoryToEdit].title = body['title-edit'];
 
 			return { success: true };
 		}
@@ -121,7 +121,7 @@ const apiRoutes = [
 			newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
 			categories.push({
 				id: newId,
-				...body
+				title: body['title-create']
 			});
 
 			return { success: true, newId };

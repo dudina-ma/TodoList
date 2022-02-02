@@ -18,10 +18,7 @@ categoryCreateFormOnPage.addEventListener('submit', createCategory);
 function createCategory(event) {
 	event.preventDefault();
 
-	let formData = new FormData(event.target);
-
-	let newCategory = {};
-	formData.forEach((value, key) => newCategory[key] = value);
+	let newCategory = window.createObjectFromFormFields(categoryCreateFormOnPage);
 
 	window.clearValidationErrors();
 
@@ -44,20 +41,20 @@ function createCategory(event) {
 
 		const categoriesList = document.querySelector('.categories-list');
 
-		const categoryHtml = `<div class="category-container" data-category-id="${result.newId}">
+		const categoryHtml = `<li class="category-container" data-category-id="${result.newId}">
 			<div class='category' data-category-id="${result.newId}">
-				<li class="category-title">${newCategory.title}</li>
+				<div class="category-title">${newCategory['title-create']}</div>
 				<div class="category-controllers">
 					<button type="button" class="edit-btn" data-category-id="${result.newId}"></button>
 					<button type="button" class="delete-btn" data-category-id="${result.newId}"></button>
 				</div>
 			</div>
 			<form class='category-edit-form invisible' data-category-id="${result.newId}">
-				<input type='text' name='title-edit' class='category-edit-form-field' maxlength="15" value=${newCategory.title}>
+				<input type='text' name='title-edit' class='category-edit-form-field' maxlength="15" value=${newCategory['title-create']}>
 				<input type='submit' value='Edit category' class='category-edit-form-btn'>
 				<div class='title-edit-validation-error-place'></div>
 			</form>
-		</div>`;
+		</li>`;
 
 		categoriesList.innerHTML += categoryHtml;
 	});
@@ -128,10 +125,7 @@ function editCategory(categoryId) {
 	function save(event) {
 		event.preventDefault();
 
-		let formData = new FormData(event.target);
-
-		let editedCategory = {};
-		formData.forEach((value, key) => editedCategory[key] = value);
+		let editedCategory = window.createObjectFromFormFields(categoryEditForm);
 
 		window.clearValidationErrors();
 
@@ -144,14 +138,14 @@ function editCategory(categoryId) {
 		}).then(response => response.json()
 		).then(result => {
 			if (result.validationResult) {
-				window.addValidationErrors(result.validationResult);
+				window.addValidationErrors(result.validationResult, categoryEditForm);
 				return;
 			}
 
 			categoryEditForm.classList.add('invisible');
 
 			const categoryTitle = document.querySelector('.category[data-category-id="' + categoryId + '"] > .category-title');
-			categoryTitle.textContent = editedCategory.title;
+			categoryTitle.textContent = editedCategory['title-edit'];
 
 			category.classList.remove('invisible');
 		});

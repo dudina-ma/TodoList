@@ -12,8 +12,10 @@ window.createObjectFromFormFields = function(form) {
 	}
 
 	const select = form.querySelector('select');
-	const selectedOpts = [...select.options].filter(x => x.selected).map(x => x.value);
-	result[select.name] = selectedOpts;
+	if (select) {
+		const selectedOpts = [...select.options].filter(x => x.selected).map(x => x.value);
+		result[select.name] = selectedOpts;
+	}
 
 	return result;
 };

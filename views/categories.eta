@@ -28,7 +28,7 @@
 				</div>
 			</div>
 			<form class='category-edit-form invisible' data-category-id="<%= category.id %>">
-				<input type='text' name='title-edit' class='category-edit-form-field' maxlength="15" value=<%= category.title %>>
+				<input type='text' name='title-edit' class='category-edit-form-field' maxlength="20" value=<%= category.title %>>
 				<input type='submit' value='Edit category' class='category-edit-form-btn'>
 				<div class='title-edit-validation-error-place'></div>
 			</form>
@@ -39,6 +39,7 @@
 
 <%~ includeFile('./paging.eta', { onePageItemsNumber: it.onePageCategoriesNumber, array: it.categories, ...it }) %>
 
+<script src="/scripts/createObjectFromFormFields.js"></script>
 <script src="/scripts/categories.js"></script>
 <script src="/scripts/validation.js"></script>
 
