@@ -2,7 +2,7 @@
 	// check
 	const todos = document.querySelectorAll('.todo');
 
-	for (let todo of todos) {
+	for (const todo of todos) {
 		todo.addEventListener('change', checkTodo);
 	}
 
@@ -17,7 +17,7 @@
 	// delete
 	const deleteBtns = document.querySelectorAll('.delete-btn');
 
-	for (let deleteBtn of deleteBtns) {
+	for (const deleteBtn of deleteBtns) {
 		deleteBtn.addEventListener('click', deleteTodo);
 	}
 

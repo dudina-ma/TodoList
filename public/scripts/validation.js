@@ -1,7 +1,7 @@
 window.addValidationErrors = function(validationResults, form) {
-	let root = form ?? document;
+	const root = form ?? document;
 
-	for (let result of Object.keys(validationResults)) {
+	for (const result of Object.keys(validationResults)) {
 		const field = root.querySelector('[name=\'' + result + '\']');
 		field.classList.add('error');
 		for (let i = 0; i < validationResults[result].length; i++) {
@@ -16,11 +16,11 @@ window.addValidationErrors = function(validationResults, form) {
 
 window.clearValidationErrors = function() {
 	const validationErrorsOnPage = document.querySelectorAll('.validation-error');
-	for (let validationErrorOnPage of validationErrorsOnPage) {
+	for (const validationErrorOnPage of validationErrorsOnPage) {
 		validationErrorOnPage.remove();
 	}
 	const fieldsWithError = document.querySelectorAll('.error');
-	for (let fieldWithError of fieldsWithError) {
+	for (const fieldWithError of fieldsWithError) {
 		fieldWithError.classList.remove('error');
 	}
 };

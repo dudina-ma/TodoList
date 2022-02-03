@@ -37,7 +37,7 @@ const apiRoutes = [
 		method: 'POST',
 		action(params) {
 			const idNumber = Number(params.id);
-			let todoIdToDelete = todos.findIndex(item => item.id === idNumber);
+			const todoIdToDelete = todos.findIndex(item => item.id === idNumber);
 			todos.splice(todoIdToDelete, 1);
 		}
 	},
@@ -46,7 +46,7 @@ const apiRoutes = [
 		method: 'POST',
 		action(params) {
 			const idNumber = Number(params.id);
-			let todoIdToCheck = todos.findIndex(item => item.id === idNumber);
+			const todoIdToCheck = todos.findIndex(item => item.id === idNumber);
 			todos[todoIdToCheck].isDone = params.checked === 'true';
 		}
 	},
@@ -65,7 +65,7 @@ const apiRoutes = [
 			}
 
 			const idNumber = Number(params.id);
-			let todoToEdit = todos.findIndex(item => item.id === idNumber);
+			const todoToEdit = todos.findIndex(item => item.id === idNumber);
 
 			todos[todoToEdit].title = body.title;
 			todos[todoToEdit].description = body.description;
@@ -101,7 +101,7 @@ const apiRoutes = [
 				return {validationResult};
 			}
 
-			let categoryToEdit = categories.findIndex(item => item.id === idNumber);
+			const categoryToEdit = categories.findIndex(item => item.id === idNumber);
 			categories[categoryToEdit].title = body['title-edit'];
 
 			return { success: true };
@@ -119,9 +119,7 @@ const apiRoutes = [
 				return {validationResult};
 			}
 
-			let newId;
-
-			newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
+			const newId = Math.max.apply(null, categories.map(c => c.id)) + 1;
 			categories.push({
 				id: newId,
 				title: body['title-create']
@@ -135,9 +133,9 @@ const apiRoutes = [
 		method: 'POST',
 		action(params) {
 			const categoryId = Number(params.id);
-			let categoryIdToDelete = categories.findIndex(item => item.id === categoryId);
-			let hasCategories = todos.some(item => item.categoryIds.includes(categoryId));
-			let result = {};
+			const categoryIdToDelete = categories.findIndex(item => item.id === categoryId);
+			const hasCategories = todos.some(item => item.categoryIds.includes(categoryId));
+			const result = {};
 			result.isDeleted = false;
 			if (!hasCategories) {
 				categories.splice(categoryIdToDelete, 1);

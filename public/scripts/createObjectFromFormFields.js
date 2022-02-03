@@ -1,8 +1,8 @@
 window.createObjectFromFormFields = function(form) {
 	const inputs = form.querySelectorAll('input');
-	let result = {};
+	const result = {};
 
-	for (let input of inputs) {
+	for (const input of inputs) {
 		if (input.type === 'text') {
 			result[input.name] = input.value;
 		}

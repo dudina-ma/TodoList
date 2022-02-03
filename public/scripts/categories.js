@@ -18,7 +18,7 @@ categoryCreateFormOnPage.addEventListener('submit', createCategory);
 function createCategory(event) {
 	event.preventDefault();
 
-	let newCategory = window.createObjectFromFormFields(categoryCreateFormOnPage);
+	const newCategory = window.createObjectFromFormFields(categoryCreateFormOnPage);
 
 	window.clearValidationErrors();
 
@@ -72,7 +72,7 @@ const categoryList = document.querySelector('.categories-list');
 categoryList.addEventListener('click', addHandlers);
 
 function addHandlers(event) {
-	let target = event.target;
+	const target = event.target;
 	const categoryId = event.target.dataset.categoryId;
 
 	if (target.classList.contains('delete-btn')) {
@@ -125,7 +125,7 @@ function editCategory(categoryId) {
 	function save(event) {
 		event.preventDefault();
 
-		let editedCategory = window.createObjectFromFormFields(categoryEditForm);
+		const editedCategory = window.createObjectFromFormFields(categoryEditForm);
 
 		window.clearValidationErrors();
 

@@ -11,7 +11,7 @@ function checkHasSwearing(fieldValue) {
 
 	let hasSwearings = false;
 
-	for (let swearing of swearings) {
+	for (const swearing of swearings) {
 		if (fieldValue.toLowerCase().includes(swearing)) {
 			hasSwearings = true;
 			break;
@@ -22,7 +22,7 @@ function checkHasSwearing(fieldValue) {
 }
 
 function addError(validationResult, fieldName, notificationText) {
-	let errorArray = validationResult[fieldName] ?? [];
+	const errorArray = validationResult[fieldName] ?? [];
 
 	errorArray.push(notificationText);
 

@@ -16,7 +16,7 @@ clearValidationErrorsOnInput(createEditForm);
 const createEditFormSelects = document.querySelectorAll('.create-edit-form select');
 
 function clearValidationErrorsOnChange(selects) {
-	for (let select of selects) {
+	for (const select of selects) {
 		select.addEventListener('change', () => {
 			window.clearValidationErrors();
 		});
@@ -30,7 +30,7 @@ createEditForm.addEventListener('submit', createAndEditTodo);
 function createAndEditTodo(event) {
 	event.preventDefault();
 
-	let newOrEditedTodo = window.createObjectFromFormFields(createEditForm);
+	const newOrEditedTodo = window.createObjectFromFormFields(createEditForm);
 	newOrEditedTodo.categoryIds = newOrEditedTodo.categoryIds.map(id => Number(id));
 
 	window.clearValidationErrors();

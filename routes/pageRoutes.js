@@ -8,7 +8,7 @@ const pageRoutes = [
 		page: 'index.eta',
 		getData(params, queryParams) {
 			const onePageTodosNumber = 4;
-			let currentPage = Number(queryParams.page ?? 1);
+			const currentPage = Number(queryParams.page ?? 1);
 
 			let results = todos;
 
@@ -19,7 +19,7 @@ const pageRoutes = [
 			}
 
 			if (queryParams.category) {
-				let categoryId = Number(queryParams.category);
+				const categoryId = Number(queryParams.category);
 				results = results.filter(result => result.categoryIds.includes(categoryId));
 			}
 
@@ -84,9 +84,9 @@ const pageRoutes = [
 		page: 'categories.eta',
 		getData(params, queryParams) {
 			const onePageCategoriesNumber = 6;
-			let currentPage = Number(queryParams.page ?? 1);
+			const currentPage = Number(queryParams.page ?? 1);
 
-			let categoriesOnPage = getItemsOnCurrentPage(categories, onePageCategoriesNumber, currentPage);
+			const categoriesOnPage = getItemsOnCurrentPage(categories, onePageCategoriesNumber, currentPage);
 
 			return {
 				categories,
