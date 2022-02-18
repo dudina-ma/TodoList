@@ -1,153 +1,157 @@
-// submit createForm
+'use strict';
 
-const categoryCreateFormOnPage = document.querySelector('.category-create-form');
-const categoryCreateFormField = document.querySelector('.category-create-form-field');
-const createBtn = document.querySelector('.create-btn');
+(function() {
+	// submit createForm
 
-createBtn.addEventListener('click', showCreateForm);
+	const categoryCreateFormOnPage = document.querySelector('.category-create-form');
+	const categoryCreateFormField = document.querySelector('.category-create-form-field');
+	const createBtn = document.querySelector('.create-btn');
 
-function showCreateForm() {
+	createBtn.addEventListener('click', showCreateForm);
 
-	categoryCreateFormOnPage.classList.remove('invisible');
+	function showCreateForm() {
 
-	categoryCreateFormField.focus();
-}
+		categoryCreateFormOnPage.classList.remove('invisible');
 
-categoryCreateFormOnPage.addEventListener('submit', createCategory);
-
-function createCategory(event) {
-	event.preventDefault();
-
-	const newCategory = window.createObjectFromFormFields(categoryCreateFormOnPage);
-
-	window.clearValidationErrors();
-
-	fetch('/api/category/create/', {
-		method: 'POST',
-		body: JSON.stringify(newCategory),
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	}).then(response => response.json()
-	).then(result => {
-		if (result.validationResult) {
-			window.addValidationErrors(result.validationResult);
-			return;
-		}
-
-		categoryCreateFormField.value = '';
-
-		categoryCreateFormOnPage.classList.add('invisible');
-
-		const categoriesList = document.querySelector('.categories-list');
-
-		const categoryHtml = `<li class="category-container" data-category-id="${result.newId}">
-			<div class='category' data-category-id="${result.newId}">
-				<div class="category-title">${newCategory['title-create']}</div>
-				<div class="category-controllers">
-					<button type="button" class="edit-btn" data-category-id="${result.newId}"></button>
-					<button type="button" class="delete-btn" data-category-id="${result.newId}"></button>
-				</div>
-			</div>
-			<form class='category-edit-form invisible' data-category-id="${result.newId}">
-				<input type='text' name='title-edit' class='category-edit-form-field' maxlength="15" value=${newCategory['title-create']}>
-				<input type='submit' value='Edit category' class='category-edit-form-btn'>
-				<div class='title-edit-validation-error-place'></div>
-			</form>
-		</li>`;
-
-		categoriesList.innerHTML += categoryHtml;
-	});
-}
-
-function clearValidationErrorsOnInput(form) {
-	form.addEventListener('input', () => {
-		window.clearValidationErrors();
-	});
-}
-
-clearValidationErrorsOnInput(categoryCreateFormOnPage);
-
-const categoryList = document.querySelector('.categories-list');
-categoryList.addEventListener('click', addHandlers);
-
-function addHandlers(event) {
-	const target = event.target;
-	const categoryId = event.target.dataset.categoryId;
-
-	if (target.classList.contains('delete-btn')) {
-		deleteCategory(categoryId);
+		categoryCreateFormField.focus();
 	}
 
-	if (target.classList.contains('edit-btn')) {
-		editCategory(categoryId);
-	}
-}
+	categoryCreateFormOnPage.addEventListener('submit', createCategory);
 
-
-// delete
-function deleteCategory(categoryId) {
-	window.Modal.showConfirm('Delete category', 'Do you really want to delete category?', onConfirmDelete);
-
-	function onConfirmDelete() {
-		fetch('/api/category/' + categoryId + '/delete/', {method: 'POST'})
-			.then(response => response.json()
-			).then(result => {
-				if (!result.isDeleted) {
-					window.Modal.showAlert('Delete category',
-						'This category is being used. You should delete all todos with this category first.');
-				} else {
-					const categoryToDelete = document.querySelector('.category-container[data-category-id="' + categoryId + '"]');
-					categoryToDelete.remove();
-				}
-			});
-	}
-}
-
-// edit
-function editCategory(categoryId) {
-	const category = document.querySelector('.category[data-category-id="' + categoryId + '"]');
-	category.classList.add('invisible');
-
-	const categoryEditForm = document.querySelector('.category-edit-form[data-category-id="' + categoryId + '"]');
-	const categoryEditFormField = document.querySelector('.category-edit-form[data-category-id="' + categoryId + '"] > input[name="title-edit"]');
-
-	categoryEditForm.classList.remove('invisible');
-	categoryEditFormField.focus();
-
-	// to move the cursor to the end
-	const fieldValue = categoryEditFormField.value;
-	categoryEditFormField.value = '';
-	categoryEditFormField.value = fieldValue;
-
-	categoryEditForm.addEventListener('submit', save);
-
-	function save(event) {
+	function createCategory(event) {
 		event.preventDefault();
 
-		const editedCategory = window.createObjectFromFormFields(categoryEditForm);
+		const newCategory = window.createObjectFromFormFields(categoryCreateFormOnPage);
 
 		window.clearValidationErrors();
 
-		fetch('/api/category/' + categoryId + '/edit/', {
+		fetch('/api/category/create/', {
 			method: 'POST',
-			body: JSON.stringify(editedCategory),
+			body: JSON.stringify(newCategory),
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		}).then(response => response.json()
 		).then(result => {
 			if (result.validationResult) {
-				window.addValidationErrors(result.validationResult, categoryEditForm);
+				window.addValidationErrors(result.validationResult);
 				return;
 			}
 
-			categoryEditForm.classList.add('invisible');
+			categoryCreateFormField.value = '';
 
-			const categoryTitle = document.querySelector('.category[data-category-id="' + categoryId + '"] > .category-title');
-			categoryTitle.textContent = editedCategory['title-edit'];
+			categoryCreateFormOnPage.classList.add('invisible');
 
-			category.classList.remove('invisible');
+			const categoriesList = document.querySelector('.categories-list');
+
+			const categoryHtml = `<li class="category-container" data-category-id="${result.newId}">
+				<div class='category' data-category-id="${result.newId}">
+					<div class="category-title">${newCategory['title-create']}</div>
+					<div class="category-controllers">
+						<button type="button" class="edit-btn" data-category-id="${result.newId}"></button>
+						<button type="button" class="delete-btn" data-category-id="${result.newId}"></button>
+					</div>
+				</div>
+				<form class='category-edit-form invisible' data-category-id="${result.newId}">
+					<input type='text' name='title-edit' class='category-edit-form-field' maxlength="15" value=${newCategory['title-create']}>
+					<input type='submit' value='Edit category' class='category-edit-form-btn'>
+					<div class='title-edit-validation-error-place'></div>
+				</form>
+			</li>`;
+
+			categoriesList.innerHTML += categoryHtml;
 		});
 	}
-}
+
+	function clearValidationErrorsOnInput(form) {
+		form.addEventListener('input', () => {
+			window.clearValidationErrors();
+		});
+	}
+
+	clearValidationErrorsOnInput(categoryCreateFormOnPage);
+
+	const categoryList = document.querySelector('.categories-list');
+	categoryList.addEventListener('click', addHandlers);
+
+	function addHandlers(event) {
+		const target = event.target;
+		const categoryId = event.target.dataset.categoryId;
+
+		if (target.classList.contains('delete-btn')) {
+			deleteCategory(categoryId);
+		}
+
+		if (target.classList.contains('edit-btn')) {
+			editCategory(categoryId);
+		}
+	}
+
+
+	// delete
+	function deleteCategory(categoryId) {
+		window.Modal.showConfirm('Delete category', 'Do you really want to delete category?', onConfirmDelete);
+
+		function onConfirmDelete() {
+			fetch('/api/category/' + categoryId + '/delete/', {method: 'POST'})
+				.then(response => response.json()
+				).then(result => {
+					if (!result.isDeleted) {
+						window.Modal.showAlert('Delete category',
+							'This category is being used. You should delete all todos with this category first.');
+					} else {
+						const categoryToDelete = document.querySelector('.category-container[data-category-id="' + categoryId + '"]');
+						categoryToDelete.remove();
+					}
+				});
+		}
+	}
+
+	// edit
+	function editCategory(categoryId) {
+		const category = document.querySelector('.category[data-category-id="' + categoryId + '"]');
+		category.classList.add('invisible');
+
+		const categoryEditForm = document.querySelector('.category-edit-form[data-category-id="' + categoryId + '"]');
+		const categoryEditFormField = document.querySelector('.category-edit-form[data-category-id="' + categoryId + '"] > input[name="title-edit"]');
+
+		categoryEditForm.classList.remove('invisible');
+		categoryEditFormField.focus();
+
+		// to move the cursor to the end
+		const fieldValue = categoryEditFormField.value;
+		categoryEditFormField.value = '';
+		categoryEditFormField.value = fieldValue;
+
+		categoryEditForm.addEventListener('submit', save);
+
+		function save(event) {
+			event.preventDefault();
+
+			const editedCategory = window.createObjectFromFormFields(categoryEditForm);
+
+			window.clearValidationErrors();
+
+			fetch('/api/category/' + categoryId + '/edit/', {
+				method: 'POST',
+				body: JSON.stringify(editedCategory),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}).then(response => response.json()
+			).then(result => {
+				if (result.validationResult) {
+					window.addValidationErrors(result.validationResult, categoryEditForm);
+					return;
+				}
+
+				categoryEditForm.classList.add('invisible');
+
+				const categoryTitle = document.querySelector('.category[data-category-id="' + categoryId + '"] > .category-title');
+				categoryTitle.textContent = editedCategory['title-edit'];
+
+				category.classList.remove('invisible');
+			});
+		}
+	}
+})();

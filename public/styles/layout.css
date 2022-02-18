@@ -13,6 +13,16 @@ body, p, h2 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+input::-moz-selection {
+	color: white;
+	background: #093001;
+}
+
+input::selection {
+	color: white;
+	background: #093001;
+}
+
 .layout-positioner {
     width: 400px;
     margin: 0 auto;

@@ -1,6 +1,6 @@
 ﻿const { todos } = require('../store');
-const { checkTextField } = require('../routes/validation');
-const { checkArrayFieldEmptiness } = require('../routes/validation');
+const { checkTextField } = require('./validation');
+const { checkArrayFieldEmptiness } = require('./validation');
 const { categories } = require('../store');
 
 const apiRoutes = [

@@ -1,3 +1,5 @@
+'use strict';
+
 (function() {
 	// check
 	const todos = document.querySelectorAll('.todo');
