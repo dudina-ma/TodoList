@@ -18,7 +18,9 @@ const apiRoutes = [
 				return {validationResult};
 			}
 
-			const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
+			//const newId = Math.max.apply(null, todos.map(t => t.id)) + 1;
+			const newId = Math.max(...todos.map(t => t.id)) + 1;
+
 			todos.unshift({
 				id: newId,
 				title: body.title,
